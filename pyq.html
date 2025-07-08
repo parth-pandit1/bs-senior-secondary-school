@@ -1,0 +1,297 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CBSE Class 12 & 10 PYQs - B.S. SEN. SEC. SCHOOL</title>
+  <style>
+    body {
+      background: #f4f9ff;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      color: #002b5b;
+      margin: 30px 0 20px;
+    }
+
+    section {
+      margin-bottom: 60px;
+    }
+
+    .accordion-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .subject-section {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .subject-btn {
+      background: linear-gradient(90deg, #000428, #004e92);
+      color: #ffffff;
+      padding: 14px 18px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      white-space: nowrap;
+      letter-spacing: 0.3px;
+    }
+
+    .year-grid {
+      display: none;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin: 16px 0 30px;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .year-grid.active {
+      display: flex;
+    }
+
+     .flip-card {
+  background-color: transparent;
+  width: 90px;
+  height: 90px;
+  perspective: 1000px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  will-change: transform;
+}
+
+.flip-card.clicked {
+  width: 220px;
+  height: 160px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1); /* smoother */
+  will-change: transform;
+}
+
+    .flip-card.clicked .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front,
+    .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      backface-visibility: hidden;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .flip-card-front {
+      background: linear-gradient(135deg, #004e92, #000428);
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .flip-card-back {
+      background: #000428;
+      color: #fff;
+      transform: rotateY(180deg);
+      flex-direction: column;
+      gap: 8px;
+      padding: 8px;
+      font-weight: 500;
+    }
+
+    .flip-card-back a {
+      background: #ffffff;
+      color: #001f3f;
+      padding: 6px 10px;
+      text-decoration: none;
+      border-radius: 5px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    .flip-card-back a:hover {
+      background: #0078ff;
+      color: #fff;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 10px;
+      background: #000428;
+      color: #fff;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 1.4rem;
+      }
+
+      .subject-btn {
+        font-size: 0.9rem;
+        padding: 10px 12px;
+      }
+
+      .flip-card.clicked {
+        width: 200px;
+        height: 150px;
+      }
+
+      .flip-card {
+        width: 80px;
+        height: 80px;
+      }
+
+      .flip-card-back a {
+        font-size: 0.75rem;
+        padding: 5px 8px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">🏠 Home</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div style="text-align: center; margin-bottom: 20px;">
+    <img src="school logo.JPEG" alt="School Logo" style="width: 120px; max-width: 80%; height: auto;" />
+  </div>
+
+  <section>
+    <h2>📚 Class 12 CBSE PYQs (2025 - 2022)</h2>
+    <div class="accordion-container" id="class12"></div>
+  </section>
+
+  <section>
+    <h2>📘 Class 10 CBSE PYQs (2025 - 2022)</h2>
+    <div class="accordion-container" id="class10"></div>
+  </section>
+
+  <footer>
+    &copy; 2025 B.S. SEN. SEC. SCHOOL. All rights reserved.
+  </footer>
+
+  <script src="https://kit.fontawesome.com/a3e4fbe6df.js" crossorigin="anonymous"></script>
+  <script>
+    const class12Subjects = [
+      { name: "Mathematics", icon: "fa-square-root-alt", folder: "Math (1)" },
+      { name: "Physics", icon: "fa-atom", folder: "Physics" },
+      { name: "Chemistry", icon: "fa-vials", folder: "Chemistry" },
+      { name: "Biology", icon: "fa-dna", folder: "Biology" },
+      { name: "English", icon: "fa-book-open", folder: "Eng_Core" },
+      { name: "Hindi", icon: "fa-pen", folder: "Hindi_Core" }
+    ];
+
+    const class10Subjects = [
+      { name: "Mathematics", icon: "fa-calculator", folder: "maths" },
+      { name: "Science", icon: "fa-flask", folder: "science" },
+      { name: "Social Science", icon: "fa-globe", folder: "sst" },
+      { name: "English", icon: "fa-language", folder: "english" },
+      { name: "Hindi", icon: "fa-pen", folder: "hindi" }
+    ];
+
+    function createSubjectHTML(sub, isClass12) {
+      const container = document.createElement("div");
+      container.className = "subject-section";
+
+      const button = document.createElement("button");
+      button.className = "subject-btn";
+      button.innerHTML = `<i class="fas ${sub.icon}"></i> ${sub.name}`;
+
+      const yearGrid = document.createElement("div");
+      yearGrid.className = "year-grid";
+
+      ["2025", "2024", "2023", "2022"].forEach(year => {
+        const card = document.createElement("div");
+        card.className = "flip-card";
+
+        const inner = document.createElement("div");
+        inner.className = "flip-card-inner";
+
+        const front = document.createElement("div");
+        front.className = "flip-card-front";
+        front.textContent = year;
+
+        const back = document.createElement("div");
+        back.className = "flip-card-back";
+
+        ["Set 1", "Set 2", "Set 3", "Set 4"].forEach(set => {
+          const link = document.createElement("a");
+          link.href = isClass12
+            ? `expanded/${sub.folder}/${set.replace(" ", "-")}.pdf`
+            : `pyqs/class10/${sub.folder}/${set.replace(" ", "-")}.pdf`;
+          link.textContent = set;
+          link.target = "_blank";
+          back.appendChild(link);
+        });
+
+        inner.appendChild(front);
+        inner.appendChild(back);
+        card.appendChild(inner);
+
+        // ✅ Ensure only one card is flipped at a time in a subject
+        card.onclick = () => {
+          [...yearGrid.children].forEach(c => {
+            if (c !== card) c.classList.remove("clicked");
+          });
+          card.classList.toggle("clicked");
+        };
+
+        yearGrid.appendChild(card);
+      });
+
+      button.onclick = () => yearGrid.classList.toggle("active");
+
+      container.appendChild(button);
+      container.appendChild(yearGrid);
+
+      return container;
+    }
+
+    class12Subjects.forEach(sub => {
+      const html = createSubjectHTML(sub, true);
+      document.getElementById("class12").appendChild(html);
+    });
+
+    class10Subjects.forEach(sub => {
+      const html = createSubjectHTML(sub, false);
+      document.getElementById("class10").appendChild(html);
+    });
+  </script>
+</body>
+</html>
