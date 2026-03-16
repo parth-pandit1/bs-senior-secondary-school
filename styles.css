@@ -316,8 +316,8 @@ body::before {
    ===================== */
 @media (max-width: 768px) {
   .top-info {
-    padding: 12px;
-    justify-content: center;
+    padding: 8px 12px;
+    justify-content: flex-start;
   }
 
   .header-content {
@@ -326,15 +326,15 @@ body::before {
   }
 
   .logo-left img {
-    height: 55px; /* Mobile par logo thoda chota */
+    height: 48px; /* Mobile par logo thoda chota */
   }
 
   .school-title h1 {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .school-title p {
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     letter-spacing: 0.5px;
   }
 }
@@ -696,7 +696,7 @@ header {
   }
 
   .gallery-card {
-    height: 220px;
+    height: 200px;
     max-height: 250px;
     min-width: 170px;
   }
@@ -759,9 +759,15 @@ header {
 /* HEADING */
 .why-heading {
   font-size: 40px;
-  color: #1f2937;
+  font-weight: 800;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #1a237e, #007bff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   line-height: 1.2;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 
 /* ACCENT LINE */
@@ -782,7 +788,8 @@ header {
   border-radius: 0 70px 70px 0;
   border-left: 5px solid #fbc02d;
   box-shadow: 0 14px 38px rgba(0,0,0,0.08);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  will-change: transform;
   margin-bottom: 22px;
 }
 
@@ -852,7 +859,9 @@ header {
   padding: 42px 26px 36px;
   text-align: center;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
-  transition: all 0.35s ease;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              box-shadow 0.3s ease;
+  will-change: transform;
 }
 
 /* Gradient Border */
@@ -1071,7 +1080,12 @@ header {
   text-align: center;
   font-size: 38px;
   font-weight: 800;
-  color: #0a2540;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #1a237e, #007bff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   margin-bottom: 70px;
 }
 
@@ -1090,7 +1104,9 @@ header {
   border-radius: 28px;
   background: #fff;
   box-shadow: 0 30px 70px rgba(0, 0, 0, 0.08);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              box-shadow 0.3s ease;
+  will-change: transform;
 }
 
 .feature-card:hover {
@@ -1164,6 +1180,16 @@ header {
   }
 }
 
+/* Mobile-first image sizing for key sections */
+@media (max-width: 768px) {
+  .feature-image img {
+    max-height: 200px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+}
+
 /* =====================
    GALLERY (FIXED ALIGNMENT)
    ===================== */
@@ -1177,6 +1203,13 @@ header {
   text-align: center;
   margin-bottom: 30px;
   font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #1a237e, #007bff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .gallery-wrapper {
@@ -1241,7 +1274,13 @@ header {
 .beyond-text h2 {
   font-size: 2.2rem;
   font-weight: 800;
-  margin-bottom: 15px;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #1a237e, #007bff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 18px;
 }
 
 .beyond-text h2 span {
@@ -1292,7 +1331,9 @@ header {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  transition: 0.4s ease;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              box-shadow 0.3s ease;
+  will-change: transform;
 }
 
 .beyond-card:hover {
@@ -1400,7 +1441,11 @@ header {
   border-radius: 20px;
   background: #ffffff;
   text-align: center;
-
+  padding: 20px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              box-shadow 0.3s ease;
+  will-change: transform;
 }
 
 .topper-card img {
@@ -1408,6 +1453,18 @@ header {
   height: 200px;
   object-fit: cover;
   border-radius: 20px 20px 0 0;
+}
+
+@media (max-width: 768px) {
+  .topper-card {
+    min-width: 220px;
+    padding: 25px;
+  }
+
+  .topper-card h4,
+  .topper-card p {
+    font-size: 1.2rem;
+  }
 }
 
 /* 🔥 KEY PART */
@@ -1440,9 +1497,14 @@ header {
 
 .main-heading {
     font-size: 2.8rem;
-    color: #001c3d; /* Navy Blue */
     font-weight: 800;
-    margin: 0;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #1a237e, #007bff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin: 0 0 14px 0;
     position: relative;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
 }
@@ -1626,10 +1688,11 @@ body {
   box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 
   transition:
-    transform 0.25s ease,
+    transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
     background 0.25s ease,
     box-shadow 0.25s ease,
     color 0.25s ease;
+  will-change: transform;
 }
 
 /* =====================
