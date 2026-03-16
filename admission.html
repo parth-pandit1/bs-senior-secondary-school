@@ -1,21 +1,337 @@
- <!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Admission Form - B.S. SEN. SEC. SCHOOL</title>
+  <meta name="description" content="Apply for admission to B.S. Senior Secondary School. Submit student details online and our team will contact you with the next steps.">
+  <meta name="keywords" content="B.S. Senior Secondary School admission, CBSE school admission, Yamunanagar school admission, Salempur Khadar school, admission form">
+  <meta name="author" content="B.S. SEN. SEC. SCHOOL">
+  <link rel="icon" href="school_logo.webp">
+
   <style>
-    body {
-      background: linear-gradient(to right, #004e92, #000428);
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 20px 10px;
-      color: #333;
-    }
+     .page-reveal {
+  opacity: 0;
+  filter: blur(12px);
+  transform: scale(1.02);
+  transition: 
+    opacity 1s ease,
+    filter 1s ease,
+    transform 1s ease;
+}
+
+.page-reveal.active {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1);
+}
+    :root {
+  --primary: #0a2540;
+  --secondary: #1f6ae1;
+  --accent: #f5b700;
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --text: #1f2933;
+}
+
+/* =====================
+   RESET
+   ===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+ /* ===== TOP INFO GLASS HEADER ===== */
+.top-info {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 18px 40px;
+  margin-bottom: 10px;
+
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.4);
+}
+
+/* subtle gradient glow */
+.top-info::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(0, 78, 146, 0.12),
+    rgba(255, 193, 7, 0.12)
+  );
+  z-index: -1;
+}
+
+ /* =====================
+   B.S. SCHOOL YELLOW THEME HEADER
+   ===================== */
+.top-info {
+  background: #ffffff;
+  padding: 15px 5%;
+  /* Green border ki jagah Deep Yellow border */
+  border-bottom: 4px solid ; 
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Logo aur naam ke beech ki doori */
+}
+
+/* ===== LOGO STYLE ===== */
+.logo-left img {
+  height: 85px;
+  width: auto;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.1));
+}
+
+/* ===== SCHOOL TITLE ===== */
+.school-title {
+  text-align: left;
+}
+
+.school-title h1 {
+  margin: 0;
+  font-family: 'Inter', sans-serif; /* Modern Bold Look */
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #001c3d; /* Navy Blue/Dark text for high contrast */
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+/* "SCHOOL" word Deep Yellow mein */
+.school-title h1 span {
+  color: #fdbb0a; 
+}
+
+.school-title p {
+  margin-top: 4px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #555555; /* Professional Grey */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* =====================
+   MOBILE RESPONSIVE
+   ===================== */
+@media (max-width: 768px) {
+  .top-info {
+    padding: 12px;
+    justify-content: center;
+  }
+
+  .header-content {
+    flex-direction: row; 
+    gap: 12px;
+  }
+
+  .logo-left img {
+    height: 55px; /* Mobile par logo thoda chota */
+  }
+
+  .school-title h1 {
+    font-size: 1.1rem;
+  }
+
+  .school-title p {
+    font-size: 0.65rem;
+    letter-spacing: 0.5px;
+  }
+}
+
+
+ /* ===============================
+   CLEAN & SOLID NAVBAR (NO HOVER)
+   =============================== */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #001c3d;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 14px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Menu button */
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+ /* ===============================
+   CENTERED RESPONSIVE NAVBAR
+   =============================== */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #001c3d;
+}
+
+/* Container */
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 14px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Menu toggle (mobile) */
+.menu-toggle {
+  display: none;
+  position: absolute;
+  left: 20px;
+
+  font-size: 26px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+}
+
+/* Links list */
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Links */
+.nav-links li a {
+  text-decoration: none;
+  color: #ffffff;
+
+  padding: 12px 18px;
+  border-radius: 6px;
+
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* 🔥 BRIGHT HOVER */
+.nav-links li a:hover {
+  background: #ffdd57;
+  color: #001c3d;
+}
+
+/* Active page */
+.nav-links li a.active {
+  background: #ffffff;
+  color: #001c3d;
+}
+
+/* ===============================
+   MOBILE NAVBAR
+   =============================== */
+@media (max-width: 900px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: #001c3d;
+    display: none;
+  }
+
+  .navbar.active {
+    display: block;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    padding: 14px 0;
+  }
+
+  .nav-links li a {
+    width: 90%;
+    text-align: center;
+    margin: 6px auto;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .nav-links li a:hover {
+    background: #ffdd57;
+    color: #001c3d;
+  }
+}
+/* ===== HERO ===== */
+.gallery-hero{
+  background:url('img1.jpg') center/cover no-repeat;
+  padding:120px 20px;
+  text-align:center;
+  color:#fff;
+}
+ .gallery-title-box {
+  max-width: 700px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.12);
+  /* Red line fix: Add webkit for compatibility */
+  -webkit-backdrop-filter: blur(4px); 
+  backdrop-filter: blur(4px);
+  padding: 40px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Optional: Isse glass look accha aata hai */
+}
+.gallery-title-box h1{
+  margin:0;
+  font-size:44px;
+}
 
     h2 {
       text-align: center;
-      color: #fff;
+      color:black;
       margin: 20px 0;
       font-size: 1.8rem;
     }
@@ -119,46 +435,245 @@
       font-size: 0.9rem;
     }
 
-    .popup-overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.5);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      display: none;
-    }
+     /* Modern Popup Style */
+ .popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 28, 61, 0.85);
+  -webkit-backdrop-filter: blur(8px); /* Safari support */
+  backdrop-filter: blur(8px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
 
-    .popup-box {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 30px;
-      max-width: 90%;
-      text-align: center;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-      animation: scaleUp 0.4s ease forwards;
-    }
+.popup-box {
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  transform: translateY(20px);
+  animation: slideUp 0.4s ease forwards;
+}
 
-    .popup-box h3 {
-      margin: 0;
-      color: #004e92;
-      font-size: 1.2rem;
-    }
+@keyframes slideUp {
+  to { transform: translateY(0); opacity: 1; }
+}
 
-    @keyframes scaleUp {
-      from { transform: scale(0.5); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
+.success-icon {
+  font-size: 60px;
+  color: #28a745; /* Success Green */
+  margin-bottom: 15px;
+  animation: bounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+.popup-box h3 {
+  color: #001c3d;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.popup-box p {
+  color: #555;
+  font-size: 15px;
+  margin-bottom: 25px;
+}
+
+.close-btn {
+  background: #fdbb0a; /* School Yellow */
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-weight: 700;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(253, 187, 10, 0.3);
+}
+
+.close-btn:hover {
+  background: #001c3d;
+  color: #fff;
+  transform: scale(1.05);
+}
+    .footer-main {
+  /* Blue background jo aapne pehle diya tha */
+  background: linear-gradient(135deg, #001c3d, #000428);
+  color: #ffffff;
+  padding: 50px 20px 0;
+  margin-top: 60px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  /* Desktop pe 4 columns, mobile pe apne aap 1 column ho jayega */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 35px;
+}
+
+.footer-box h3 {
+  color: #ffdd57; /* Wahi yellow color */
+  margin-bottom: 15px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.footer-box p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #e0e0e0;
+}
+
+.footer-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-box ul li {
+  margin-bottom: 10px;
+}
+
+.footer-box ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  transition: 0.3s;
+  display: inline-block; /* Mobile touch ke liye behtar hai */
+}
+
+.footer-box ul li a:hover {
+  color: #ffdd57;
+  padding-left: 5px;
+}
+
+.footer-social {
+  margin-top: 15px;
+  display: flex;
+  gap: 15px;
+}
+
+.footer-social a {
+  font-size: 20px;
+  color: #ffdd57;
+  text-decoration: none;
+  transition: transform 0.3s;
+}
+
+.footer-social a:hover {
+  transform: scale(1.2);
+}
+
+.footer-map iframe {
+  width: 100%;
+  height: 180px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.footer-bottom {
+  margin-top: 40px;
+  background: #000000;
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+  color: #cccccc;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* ===============================
+   MOBILE SPECIFIC FIXES (RESPONSIVE)
+   =============================== */
+@media (max-width: 768px) {
+  .footer-main {
+    padding: 40px 15px 0;
+    text-align: center; /* Mobile par centered text clean dikhta hai */
+  }
+
+  .footer-container {
+    /* Mobile par grid ko 1 column kar diya */
+    grid-template-columns: 1fr; 
+    gap: 40px;
+  }
+
+  .footer-social {
+    justify-content: center; /* Icons center mein aa jayenge */
+  }
+
+  .footer-box h3::after {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 2px;
+    background: #ffdd57;
+    margin: 8px auto 0; /* Center line for headings */
+  }
+  
+  .footer-map iframe {
+    height: 220px; /* Mobile pe thoda bada map */
+  }
+
+  .footer-bottom p {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+}
   </style>
 
   <script src="https://kit.fontawesome.com/a3e4fbe6df.js" crossorigin="anonymous"></script>
 </head>
-<body>
-  <div style="text-align: center; margin-bottom: 20px;">
-    <img src="school logo.JPEG" alt="School Logo" style="width: 120px; max-width: 80%; height: auto;" />
+<body class="page-reveal">
+    <!-- top-->
+ <div class="top-info">
+  <div class="header-content">
+    <div class="logo-left">
+      <img src="school_logo.webp" alt="B.S. School Logo">
+    </div>
+
+    <div class="school-title">
+      <h1>B.S. SENIOR SECONDARY <span>SCHOOL</span></h1>
+      <p>Affiliated to CBSE, New Delhi</p>
+    </div>
   </div>
+</div>
+  <!--navbar -->
+ <header>
+  <div class="nav-container">
+    <div class="menu-toggle" id="menuToggle">
+      ☰
+    </div>
+
+    <nav class="navbar" id="navbar">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="admission.html">Admission</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="gallery-hero">
+  <div class="gallery-title-box">
+    <h1>Admission Form</h1>
+    <p>Enroll Your Child for Academic Excellence</p>
+  </div>
+</section>
+
 
   <h2>🎓 Admission Form</h2>
 
@@ -220,39 +735,108 @@
     &copy; 2025 B.S. SEN. SEC. SCHOOL. All rights reserved.
   </footer>
 
-  <div class="popup-overlay" id="popup">
-    <div class="popup-box">
-      <h3>🎉 Your form has been submitted!</h3>
+   <div class="popup-overlay" id="popup">
+  <div class="popup-box">
+    <div class="success-icon">
+      <i class="fas fa-check-circle"></i>
+    </div>
+    <h3>Submission Successful!</h3>
+    <p>Thank you for choosing B.S. School. Our team will contact you shortly.</p>
+    <button onclick="closePopup()" class="close-btn">Close !</button>
+  </div>
+</div>
+<!-- ================= FOOTER ================= -->
+<footer class="footer-main">
+  <div class="footer-container">
+    <div class="footer-box">
+      <h3>B.S. SEN. SEC. SCHOOL</h3>
+      <p>A leading co-educational senior secondary school committed to excellence in academics, discipline, and holistic development.</p>
+      <p><strong>Affiliated to CBSE, New Delhi</strong></p>
+      <p>Affiliation No.: 2131580</p>
+      <p>School Code: 55069</p>
+    </div>
+
+    <div class="footer-box">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-box">
+      <h3>Contact Us</h3>
+      <p>📍 Salempur Khadar, Uttar Pradesh</p>
+      <p>📞 +91-98765-43210</p>
+      <p>✉️ info@bsschool.in</p>
     </div>
   </div>
 
+  <div class="footer-bottom">
+    <p>© <span id="year"></span> B.S. SEN. SEC. SCHOOL | Designed with ❤️ by <strong>Parth Sharma</strong></p>
+  </div>
+</footer>
+
   <script>
-    const form = document.getElementById("admissionForm");
-    const popup = document.getElementById("popup");
-
-    form.addEventListener("submit", function(e) {
-      e.preventDefault();
-      const data = new FormData(form);
-      data.append("token", "Krish$@cce");
-
-      fetch("https://script.google.com/macros/s/AKfycbytJZd1-AAEbIkuUiChFM-QphKTxij9jvZbmRa4uJeiiHU7clhsH2giiWnxURo1VTPA/exec", {
-        method: "POST",
-        body: data
-      })
-      .then(res => res.text())
-      .then(resp => {
-        if (resp === "Success") {
-          popup.style.display = "flex";
-          form.reset();
-          setTimeout(() => popup.style.display = "none", 3000);
-        } else {
-          alert("❌ Submission failed. Check token or script access.");
+    window.addEventListener("load", () => {
+  setTimeout(() => {
+    document.body.classList.add("active");
+  }, 100); // slight delay for smoothness
+});
+    function closePopup() {
+      const popup = document.getElementById("popup");
+      if (popup) popup.style.display = "none";
+    }
+    // 1. MOBILE MENU FIX (Direct function)
+    const menuBtn = document.getElementById('menuToggle');
+    const navBar = document.getElementById('navbar');
+    
+    if(menuBtn) {
+        menuBtn.onclick = function() {
+            navBar.classList.toggle('active');
         }
-      })
-      .catch(err => {
-        alert("⚠️ Error: " + err.message);
-      });
-    });
-  </script>
+    }
+
+    // 2. FORM SUBMISSION (No Base64, Hidden Parts instead)
+    const admissionForm = document.getElementById("admissionForm");
+    const successPopup = document.getElementById("popup");
+
+    admissionForm.onsubmit = function(e) {
+        e.preventDefault();
+        
+        const submitBtn = e.target.querySelector('button');
+        submitBtn.innerText = "Processing...";
+        submitBtn.disabled = true;
+
+        // URL ko 3 hisson mein toda hai taaki koi dhoond na sake
+        const p1 = "https://script.google.com/macros/s/";
+        const p2 = "AKfycbz2v6AGqZVTp2Uu4kEu4Lf2-HY-BqIftw_t1fekI4LveIf0ABZcutMj66CpZbSkMobI";
+        const p3 = "/exec";
+        const finalURL = p1 + p2 + p3;
+
+        const data = new FormData(admissionForm);
+        data.append("token", "Krish$@cce");
+
+        fetch(finalURL, {
+            method: "POST",
+            body: data,
+            mode: "no-cors" // Google Sheets ke liye ye safe hai
+        })
+         .then(() => {
+            // Popup dikhayein
+            successPopup.style.display = "flex";
+            admissionForm.reset();
+            // Ab auto-hide hatakar user ke button click ka intezar karenge
+        })
+        .catch(err => {
+            alert("Submission failed. Check Internet!");
+        })
+        .finally(() => {
+            submitBtn.innerText = "Submit";
+            submitBtn.disabled = false;
+        });
+    };
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>

@@ -1,269 +1,548 @@
- <!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>B.S. SEN. SEC. SCHOOL</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <meta name="description" content="B.S. Senior Secondary School - CBSE affiliated school providing quality education, discipline and holistic development.">
+<meta name="keywords" content="B.S. Senior Secondary School, CBSE School, Salempur Khadar School, Best School">
+<meta name="author" content="B.S. SEN. SEC. SCHOOL">
+<link rel="icon" href="school_logo.webp">
+
 </head>
 <body>
+<!-- Gallery Lightbox -->
+<div id="lightbox" aria-hidden="true">
+  <span id="closeLightbox" role="button" tabindex="0" aria-label="Close">&times;</span>
+  <img id="lightboxImg" alt="Gallery image">
+</div>
  <!-- ✅ Welcome Overlay -->
 <div id="welcome-overlay">
   <div class="welcome-box">
-    <img src="school logo.JPEG" alt="School Logo" class="school-logo">
+    <img src="school_logo.webp" alt="School Logo" class="school-logo">
     <h1>Welcome to</h1>
     <h2>B.S. SEN. SEC. SCHOOL</h2>
     <p>"Empowering the Future Through Education"</p>
   </div>
 </div>
-
-
-  <!-- Top Info Section -->
-  <div class="top-info">
+<!-- top-->
+ <div class="top-info">
+  <div class="header-content">
     <div class="logo-left">
-      <img src="school logo.JPEG" alt="School Logo" />
+      <img src="school_logo.webp" alt="B.S. School Logo">
     </div>
+
     <div class="school-title">
-      <h1>B.S. SEN. SEC. SCHOOL</h1>
-      <!-- <p>(A Leading Co-educational Senior Secondary School)</p>
-      <small>Affiliated To C.B.S.E, New Delhi | Affiliation No.: 2131580 | School Code: 55069</small> -->
-    </div>
-    <div class="logo-right">
-      <img src="CBSE.png" alt="CBSE Logo" />
+      <h1>B.S. SENIOR SECONDARY <span>SCHOOL</span></h1>
+      <p>Affiliated to CBSE, New Delhi</p>
     </div>
   </div>
+</div>
+  <!--navbar -->
+ <header>
+  <div class="nav-container">
+    <div class="menu-toggle" id="menuToggle">
+      ☰
+    </div>
 
-  <!-- Navigation Bar -->
-  <header>
-    <nav>
-      <ul>
-        <li><a href="#about">About Us</a></li>
-         <li><a href="pyq.html" target="_blank">CBSE PYQs</a></li>
-          <li><a href="contact.html" target="_blank">Contact Us</a></li>
-          <li><a href="admission.html" target="_blank"> Admissions</a></li>
-        <li><a href="#gallery">Gallery</a></li>
+    <nav class="navbar" id="navbar">
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="mandatory.html">Mandatory Disclosure</a></li>
+        <li><a href="pyq.html">CBSE PYQs</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
         <li><a href="#toppers">Toppers</a></li>
-        <li><a href="#staff">Our Leadership</a></li>
+        <li><a href="#leadership">Leadership</a></li>
+        <li><a href="admission.html">Admission</a></li>
       </ul>
     </nav>
-  </header>
-
-  <!-- Hero Banner Image (Main School Image) -->
-  <div class="hero">
-    <img src="ChatGPT Image Jul 4, 2025, 11_33_59 AM.png" alt="SCHOOL FRONT VIEW" />
   </div>
-
-  <!-- Scrolling Images
-  <div class="marquee">
-    <div class="marquee-track">
- <img src="school logo.JPEG" alt="Topper 2" style="height: 160px;">
-      <img src="PURANI BULIDING.jpeg" alt="School 1" style="height: 160px;">
-      <img src="CHILDS.jpeg" alt="School 2" style="height: 160px;">
-      <img src="STUDENTS.jpeg" alt="School 3" style="height: 160px;">
-      <img src="school logo.JPEG" alt="Topper 1" style="height: 160px;">
-       
+</header>
+     <section class="hero-slider">
+    <div class="slide active" style="background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('img1.jpg');">
     </div>
-  </div> -->
 
-  <!-- About Section -->
-  <section id="about">
-    <h2>About Our School</h2>
-    <p>B.S. SEN. SEC. SCHOOL is committed to excellence in education. We provide a nurturing environment and quality learning experiences for all students.</p>
-  </section>
-<section id="activities" style="padding: 60px 20px; background: #f9fcff;">
-   <section id="activities" style="padding: 60px 20px; background: #f9fcff;">
-  <h2 style="text-align:center; color:#004e92; font-size: 2rem; margin-bottom: 40px;">
-    🏕️ Scout Movement & 🪖 NCC Cadet Training
-  </h2>
+    <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img1.jpg');">
+        <div class="hero-content">
+            <span class="hero-tag">Step Inside</span>
+            <h1>Explore Our Modern <br>Academic Campus</h1>
+            <p>High-tech labs and creative spaces for every student.</p>
+            <a href="#explore" class="hero-btn">Explore Now</a>
+        </div>
+    </div>
 
-  <div class="activity-container">
+    <div class="slide" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img1.jpg');">
+        <div class="hero-content">
+            <span class="hero-tag">Enroll Today</span>
+            <h1>Admission Open <br>Session 2025-26</h1>
+            <p>Secure your child's seat in the most trusted school.</p>
+            <a href="#apply" class="hero-btn btn-gold">Apply For Admission</a>
+        </div>
+    </div>
+</section>
+ <div class="admission-ticker">
+    <div class="ticker-label">
+        <i class="fas fa-bullhorn"></i> <span>Updates</span>
+    </div>
+    <div class="ticker-content">
+        <div class="ticker-text">
+            <span>🚀 Admissions are now OPEN for Session 2025-26! Enroll your child today for a brighter future.</span>
+            <span>⭐ B.S. Senior Secondary School: Excellence in Education & Discipline.</span>
+            <span>📍 Visit our campus for a school tour or call us at +91-8901437877.</span>
+            <span>🚀 Admissions are now OPEN for Session 2025-26! Enroll your child today for a brighter future.</span>
+        </div>
+    </div>
+</div>
+<section class="why-clean">
+  <div class="why-wrap">
 
-    <!-- Scout Card -->
-    <div class="activity-card">
-      <img src="scout.jpg" alt="Scout Activities">
-      <div class="card-content">
-        <h3>Bharat Scouts & Guides</h3>
+    <!-- LEFT : GLOWING LOGO -->
+    <div class="why-left">
+      <img src="school_logo.webp" alt="School Logo">
+    </div>
+
+    <!-- RIGHT : NEW TEXT STYLE -->
+    <div class="why-right">
+
+      <span class="why-badge">WHY PARENTS TRUST US</span>
+
+      <h2 class="why-heading">
+        A School Where ->
+      </h2>
+
+      <div class="why-line"></div>
+
+      <div class="why-card">
+        <span>01</span>
+        <div>
+          <h3>Experienced Faculty</h3>
+          <p>Mentors who guide students academically and personally.</p>
+        </div>
+      </div>
+
+      <div class="why-card">
+        <span>02</span>
+        <div>
+          <h3>Modern Infrastructure</h3>
+          <p>Technology-enabled classrooms and safe campus.</p>
+        </div>
+      </div>
+
+      <div class="why-card">
+        <span>03</span>
+        <div>
+          <h3>Value-Based Education</h3>
+          <p>Character building alongside academic excellence.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+ <section id="school-simple">
+<div class="ss-wrap">
+<p class="ss-text">
+B.S. SEN. SEC. SCHOOL provides a safe, modern learning environment
+focused on academic excellence and overall student growth.
+</p>
+
+
+<a href="mandatory.html" class="ss-btn">View Details -></a>
+</div>
+</section>
+
+<section class="feature-section" id="explore">
+  <h2 class="feature-title">Student Support & Modern Learning</h2>
+  <div class="feature-wrapper">
+    <!-- Mentorship -->
+    <div class="feature-card mentorship reveal">
+      <div class="feature-content">
+        <span class="feature-tag">Personal Growth</span>
+        <h3>Mentorship & Guidance</h3>
         <p>
-          Our students actively engage in adventure camps, national jamborees, and service programs through the Bharat Scouts & Guides movement.
-          <span class="more-text" style="display: none;">
-            They learn self-discipline, teamwork, survival skills, and values of brotherhood through field training, volunteering, and outdoor learning.
-          </span>
+          One-on-one mentoring, academic counselling, and career guidance help
+          students grow with confidence, clarity, and purpose.
         </p>
-        <a href="#" class="read-more">Read More</a>
+      </div>
+      <div class="feature-image">
+        <img src="mentor.avif" alt="Mentorship">
       </div>
     </div>
 
-    <!-- NCC Card -->
-    <div class="activity-card">
-      <img src="ncc.avif" alt="NCC Cadets">
-      <div class="card-content">
-        <h3>National Cadet Corps (NCC)</h3>
+    <!-- Digital Learning -->
+    <div class="feature-card digital reveal">
+      <div class="feature-content">
+        <span class="feature-tag">Smart Education</span>
+        <h3>Digital Learning</h3>
         <p>
-          Our NCC Army Wing conducts regular drills, leadership camps, and nation-building training that prepares cadets to serve with discipline and pride.
-          <span class="more-text" style="display: none;">
-            Cadets also participate in Republic Day Camps, awareness rallies, and earn certificates that support future careers in defense and civil services.
-          </span>
+          Smart classrooms, e-learning tools, and digital resources transform
+          traditional learning into an interactive experience.
         </p>
-        <a href="#" class="read-more">Read More</a>
       </div>
+      <div class="feature-image">
+        <img src="digital learning.jpg" alt="Digital Learning">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <section class="auto-gallery">
+  <h2>Our Facilities</h2>
+
+  <div class="gallery-wrapper">
+    <div class="gallery-track" id="galleryTrack">
+
+      <div class="gallery-card lab">
+        <img src="lab 1.webp" alt="School science laboratory">
+        <span>LABORATORIES</span>
+      </div>
+
+      <div class="gallery-card library">
+        <img src="lab 2.webp" alt="School library">
+        <span>LIBRARY</span>
+      </div>
+
+      <div class="gallery-card sports">
+        <img src="lab 3.webp" alt="School sports activities">
+        <span>SPORTS</span>
+      </div>
+
+      <div class="gallery-card park">
+        <img src="activity 3.webp" alt="School park activity area">
+        <span>JIMMY JOLLY PARK</span>
+      </div>
+
+      <!-- 🔁 Duplicate cards for smooth loop -->
+      <div class="gallery-card lab">
+        <img src="activity 3.webp" alt="School science laboratory">
+        <span>LABORATORIES</span>
+      </div>
+
+      <div class="gallery-card library">
+        <img src="lab 3.webp" alt="School library">
+        <span>LIBRARY</span>
+      </div>
+      <div class="gallery-card sports">
+        <img src="lab 3.webp" alt="School sports activities">
+        <span>SPORTS</span>
+      </div>
+
+      <div class="gallery-card park">
+        <img src="activity 1.webp" alt="School park activity area">
+        <span>JIMMY JOLLY PARK</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- Beyond Academics Section -->
+<section class="beyond-section">
+  <div class="beyond-container">
+
+    <!-- Left Content -->
+    <div class="beyond-text">
+      <h2>BEYOND <span>ACADEMICS</span></h2>
+      <p>
+        Our school offers a wide range of co-curricular and extracurricular
+        activities to nurture creativity, discipline, and leadership among students.
+      </p>
+
+      <div class="beyond-arrows">
+        <button id="prevBtn">&#8592;</button>
+        <button id="nextBtn">&#8594;</button>
+      </div>
+    </div>
+
+    <!-- Cards Slider -->
+    <div class="beyond-slider" id="beyondSlider">
+
+      <div class="beyond-card">
+        <img src="activity 2.webp" alt="Dance and music studio activity">
+        <h4>Dance & Music Studio</h4>
+        <p>Creative training in music and classical dance forms.</p>
+      </div>
+
+      <div class="beyond-card">
+        <img src="activity 4.webp" alt="Arts and craft activity">
+        <h4>Arts</h4>
+        <p>Encouraging imagination, creativity and visual expression.</p>
+      </div>
+
+      <div class="beyond-card">
+        <img src="activity 3.webp" alt="Student clubs and group activities">
+        <h4>Clubs</h4>
+        <p>SUPW and activity clubs for overall personality development.</p>
+      </div>
+      <div class="beyond-card">
+        <img src="lab 2.webp" alt="Dance and music studio activity">
+        <h4>Dance & Music Studio</h4>
+        <p>Creative training in music and classical dance forms.</p>
+      </div>
+
+      <div class="beyond-card">
+        <img src="lab 1.webp" alt="Arts and craft activity">
+        <h4>Arts</h4>
+        <p>Encouraging imagination, creativity and visual expression.</p>
+      </div>
+
+      <div class="beyond-card">
+        <img src="activity 1.webp" alt="Student clubs and group activities">
+        <h4>Clubs</h4>
+        <p>SUPW and activity clubs for overall personality development.</p>
+      </div>
+
+
     </div>
 
   </div>
 </section>
 
-  <!-- Gallery Section -->
-<section id="gallery">
-  <h2>School Gallery</h2>
-  <div class="gallery">
-    <a href="gallery.html">
-      <div class="gallery-item">
-        <img src="PURANI BULIDING.jpeg" alt="School Building">
-        <div class="overlay">View More</div>
-      </div>
-    </a>
-    <a href="gallery.html">
-      <div class="gallery-item">
-        <img src="CHILDS.jpeg" alt="Classroom">
-        <div class="overlay">View More</div>
-      </div>
-    </a>
+<!-- topper -->
+  <section id="toppers" class="toppers-section">
+    <div class="toppers-header">
+        <div class="award-icon">
+            <i class="fas fa-trophy"></i>
+        </div>
+        <span class="hall-of-fame">Academic Hall of Fame</span>
+        <h2 class="toppers-title">Meet Our Trailblazers</h2>
+        <div class="title-underline">
+            <span class="dot"></span>
+            <span class="thick-line"></span>
+            <span class="dot"></span>
+        </div>
+    </div>
     
+    </section>
+
+  <div class="toppers-wrapper">
+    <div class="toppers-track">
+
+      <!-- ORIGINAL SET -->
+      <div class="topper-card">
+        <img src="IMG_1747[1].JPG"alt="Topper">
+        <h4>Riya Sharma</h4>
+        <p>Class 12 – 96%</p>
+      </div>
+
+      <div class="topper-card">
+        <img src="IMG_1747[1].JPG"alt="Topper">
+        <h4>Aarav Singh</h4>
+        <p>Class 10 – 94%</p>
+      </div>
+
+      <div class="topper-card">
+        <img src="IMG_1747[1].JPG" alt="Topper">
+        <h4>Neha Verma</h4>
+        <p>Class 12 – 95%</p>
+      </div>
+
+      <!-- DUPLICATE SET (MUST BE EXACT SAME ORDER) -->
+      <div class="topper-card">
+        <img src="IMG_1747[1].JPG"alt="Topper">
+        <h4>Riya Sharma</h4>
+        <p>Class 12 – 96%</p>
+      </div>
+
+      <div class="topper-card">
+        <img src="IMG_1747[1].JPG"alt="Topper">
+        <h4>Aarav Singh</h4>
+        <p>Class 10 – 94%</p>
+      </div>
+
+      <div class="topper-card">
+        <img src="IMG_1747[1].JPG"alt="Topper">
+        <h4>Neha Verma</h4>
+        <p>Class 12 – 95%</p>
+      </div>
+
+    </div>
   </div>
 </section>
 
-   <!-- 🔹 Toppers Section -->
-<section id="toppers" class="flip-section">
-  <h2>Our Toppers</h2>
+
+ <section id="leadership" class="flip-section">
+ <div class="leadership-header">
+    <span class="sub-heading">Guided by Excellence</span>
+    <h2 class="main-heading">Our School Leadership</h2>
+    <div class="heading-separator">
+        <span class="line"></span>
+        <i class="fas fa-graduation-cap"></i>
+        <span class="line"></span>
+    </div>
+</div>
+
   <div class="card-list">
-    <div class="flip-card" onclick="shiftAndFlip(this)">
+    <div class="flip-card">
       <div class="card-inner">
+
         <div class="card-front">
-          <img src="IMG_1747[1].JPG" alt="Topper 1">
-          <div class="name-tag">Riya Sharma</div>
+          <div class="photo-frame">
+            <img src="principal.webp" alt="Principal">
+          </div>
+          <div class="name-tag">Mrs. Shashi Bala
+          </div>
+           <div class="name-tag">M.A, B.Ed
+          </div>
         </div>
+
         <div class="card-back">
-          <p><strong>Riya Sharma</strong><br>Class 12 – 96%</p>
+          <p><strong>An experienced educationist dedicated to academic excellence, student discipline, and holistic development.</strong><br>Principal</p>
         </div>
+
       </div>
     </div>
 
-    <div class="flip-card" onclick="shiftAndFlip(this)">
+    <div class="flip-card">
       <div class="card-inner">
-        <div class="card-front">
-          <img src="/images/topper2.jpg" alt="Topper 2">
-          <div class="name-tag">Aarav Singh</div>
-        </div>
-        <div class="card-back">
-          <p><strong>Aarav Singh</strong><br>Class 10 – 94%</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- 🔹 Leadership Section -->
-<section id="leadership" class="flip-section">
-  <h2>School Leadership</h2>
-  <div class="card-list">
-    <div class="flip-card" onclick="shiftAndFlip(this)">
-      <div class="card-inner">
         <div class="card-front">
-          <img src="/images/principal.jpg" alt="Principal">
-          <div class="name-tag">Mr. S.K. Sharma</div>
-        </div>
-        <div class="card-back">
-          <p><strong>Mr. S.K. Sharma</strong><br>Principal</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="flip-card" onclick="shiftAndFlip(this)">
-      <div class="card-inner">
-        <div class="card-front">
-          <img src="/images/manager.jpg" alt="Manager">
+          <div class="photo-frame">
+            <img src="principal.webp" alt="Manager">
+          </div>
           <div class="name-tag">Mrs. Pooja Verma</div>
         </div>
+
         <div class="card-back">
-          <p><strong>Mrs. Pooja Verma</strong><br>Manager</p>
+          <p><strong>A visionary leader guiding the institution with integrity, innovation, and a commitment to quality education</strong><br>Manager</p>
         </div>
+
       </div>
     </div>
   </div>
 </section>
-
-  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; max-width: 1000px; margin: auto;">
-    
-    <!-- 🔹 Admission Highlight -->
-<div style="background: linear-gradient(135deg, #001c3d, #001c3d); color: white; border-radius: 16px; padding: 30px; flex: 1 1 300px; box-shadow: 0 6px 16px rgba(0,0,0,0.15); transition: 0.3s ease;">
-  <h3 style="margin-bottom: 10px;"><i class="fas fa-user-graduate"></i> Admissions Open 2025</h3>
+ <!-- 🔹 Admission Highlight -->
+<div class="highlight-card">
+  <h3 class="highlight-title">
+    <i class="fas fa-user-graduate"></i>
+    Admissions Open 2025
+  </h3>
   <p>Enroll now in Class 10, 11 & 12. Limited seats available. Click below to fill the form.</p>
   <a href="admission.html" class="highlight-button">Apply Now</a>
 </div>
 
 <!-- 🔹 PYQ Highlight -->
-<div style="background: linear-gradient(135deg, #001c3d, #001c3d); color: white; border-radius: 16px; padding: 30px; flex: 1 1 300px; box-shadow: 0 6px 16px rgba(0,0,0,0.15); transition: 0.3s ease;">
-  <h3 style="margin-bottom: 10px;"><i class="fas fa-file-alt"></i> CBSE PYQs (2025 - 2021)</h3>
-  <p>Practice previous year papers for Class 10 & 12. Subjects included: Maths, Science, English & more.</p>
+<div class="highlight-card">
+  <h3 class="highlight-title">
+    <i class="fas fa-book-open"></i>
+    CBSE PYQ (2022–2025)
+  </h3>
+  <p>Practice previous year papers for Class 10 & 12.</p>
   <a href="pyq.html" class="highlight-button">View Papers</a>
 </div>
 
-</section>
- <footer>
-  <div class="footer-container">
-    
-    <div class="footer-left">
-      <p>&copy; 2025 B.S. SEN. SEC. SCHOOL. All Rights Reserved.</p>
-      <p>Affiliated to C.B.S.E., New Delhi</p>
-      <p>Affiliation No.: 2131580 | School Code: 55069</p>
-      <p>Email: info@bsschool.in</p>
-      <p>Phone: +91-98765-43210</p>
+
+ <section class="counter-section yellow-counter">
+  <div class="counter-grid">
+    <div class="counter-box premium-counter">
+      <div class="top-line"></div>
+      <span class="counter-label">Our Students</span>
+
+      <div class="icon-wrap">
+        <i class="fas fa-user-graduate"></i>
+      </div>
+
+      <h3 class="counter" data-target="1500">0</h3>
+      <p>Students Enrolled</p>
     </div>
 
-    <div class="footer-links">
-      <h4>Quick Links</h4>
+    <div class="counter-box premium-counter">
+      <div class="top-line"></div>
+      <span class="counter-label">Our Faculty</span>
+
+      <div class="icon-wrap">
+        <i class="fas fa-chalkboard-teacher"></i>
+      </div>
+
+      <h3 class="counter" data-target="75">0</h3>
+      <p>Qualified Teachers</p>
+    </div>
+
+    <div class="counter-box premium-counter">
+      <div class="top-line"></div>
+      <span class="counter-label">Academic Results</span>
+
+      <div class="icon-wrap">
+        <i class="fas fa-award"></i>
+      </div>
+
+      <h3 class="counter" data-target="100">0</h3>
+      <p>Board Results %</p>
+    </div>
+
+  </div>
+</section>
+
+ <footer class="footer-main">
+
+  <div class="footer-container">
+
+    <!-- School Info -->
+    <div class="footer-box">
+      <h3>B.S. SEN. SEC. SCHOOL</h3>
+      <p>
+        A leading co-educational senior secondary school committed to
+        excellence in academics, discipline, and holistic development.
+      </p>
+
+      <p><strong>Affiliated to CBSE, New Delhi</strong></p>
+      <p>Affiliation No.: 531917</p>
+      <p>School Code: 41917</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-box">
+      <h3>Quick Links</h3>
       <ul>
-        <li><a href="#">🏠 Home</a></li>
-        <li><a href="#">🎓 About</a></li>
-        <li><a href="#">🖼️ Gallery</a></li>
-        <li><a href="#">📝 Admissions</a></li>
-        <li><a href="#">📞 Contact</a></li>
+        <li><a href="#">Home</a></li>
+        <li><a href="admission.html">Admissions</a></li>
+        <li><a href="pyq.html">CBSE PYQs</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
 
-    <div class="footer-map">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3480.401098868968!2d76.02384977556602!3d29.270550275322297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391223edfe719d75%3A0x41a05249a5a283d5!2sB%20S%20Sen.%20Sec.%20School%2C%20Salempur%20Khadar!5e0!3m2!1sen!2sin!4v1751783164267!5m2!1sen!2sin"
-        width="200" height="120" style="border:0; border-radius: 8px;" 
-        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-      <br />
-      <a href="https://maps.app.goo.gl/jc8nmPG4PqkCEG7f8" target="_blank" class="map-link">
-        📌 Map
-      </a>
-      <div class="footer-address">
-        <p>Near Main Road</p>
-        <p>Salempur Khadar, Uttar Pradesh - 247001</p>
+    <!-- Contact -->
+    <div class="footer-box">
+      <h3>Contact Us</h3>
+      <p>📍 Salempur Khadar, Yamunanagar , Haryana</p>
+      <p>📞 +91-8901437877</p>
+      <p>✉️ bsmschoolsalempur@gmail.com</p>
+
+      <div class="footer-social">
+        <a href="#">🌐</a>
+        <a href="#">📘</a>
+        <a href="#">📸</a>
+        <a href="#">▶️</a>
       </div>
     </div>
+
+    <!-- Google Map -->
+    <div class="footer-box footer-map">
+      <h3>School Location</h3>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3480.401098868968!2d76.02384977556602!3d29.270550275322297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391223edfe719d75%3A0x41a05249a5a283d5!2sB%20S%20Sen.%20Sec.%20School%2C%20Salempur%20Khadar!5e0!3m2!1sen!2sin!4v1751783164267!5m2!1sen!2sin"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
   </div>
 
+  <!-- Bottom Bar -->
   <div class="footer-bottom">
-    <div class="social-icons">
-      <a href="#"><i class="fab fa-facebook-f"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-youtube"></i></a>
-    </div>
-
-    <div class="developer-credit">
-      <span class="code-icon">&lt;/&gt;</span>
-      <span> ❤️ by <strong>Parth Sharma</strong></span>
-    </div>
+    <p>
+      © <span id="year"></span> B.S. SEN. SEC. SCHOOL |
+      Designed with ❤️ by <strong>Parth Sharma</strong>
+    </p>
   </div>
+
 </footer>
 
-<script src="scripts.js"></script>
-</body>
-</html>
 
+<script src="scripts.js"></script>
 </body>
 </html>

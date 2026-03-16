@@ -1,187 +1,440 @@
  <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>School Gallery - B.S. SEN. SEC. SCHOOL</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery | B.S. SEN. SEC. SCHOOL</title>
+<meta name="description" content="Explore photos from B.S. Senior Secondary School events, trips, news, and yoga activities.">
+<meta name="keywords" content="B.S. Senior Secondary School gallery, school events, educational trips, school activities, yoga day, Yamunanagar school">
+<meta name="author" content="B.S. SEN. SEC. SCHOOL">
 
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #ffffff;
-      padding: 20px;
-    }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="icon" href="school_logo.webp">
 
-    h1 {
-      text-align: center;
-      color: #004e92;
-      font-size: 2.2rem;
-      margin-bottom: 30px;
-    }
+<style>
+/* ================= PAGE REVEAL ================= */
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+}
 
-    .gallery-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      max-width: 1200px;
-      margin: auto;
-    }
+.page-reveal {
+  opacity: 0;
+  filter: blur(10px);
+  transform: scale(1.02);
+  transition: 1s ease;
+}
+.page-reveal.active {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1);
+}
 
-    .gallery-box {
-      position: relative;
-      overflow: hidden;
-      border-radius: 12px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      background-color: #e9f2ff;
-      width: calc(33.333% - 10px);
-    }
+/* ================= HERO ================= */
+.gallery-hero {
+  padding: 120px 20px;
+  text-align: center;
+  background: url('img1.jpg') center/cover no-repeat;
+}
 
-    .gallery-box img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
-      border-top-left-radius: 12px;
-      border-top-right-radius: 12px;
-    }
+ .gallery-title-box {
+  position: relative;
+  max-width: 760px;
+  margin: auto;
+  padding: 40px;
+  border-radius: 22px;
+  z-index: 1;
+  color: #000;
+}
 
-    .caption {
-      padding: 12px;
-      text-align: center;
-      background: #002147;
-      color: #fff;
-      font-weight: 500;
-      border-bottom-left-radius: 12px;
-      border-bottom-right-radius: 12px;
-    }
+/* background filter layer */
+.gallery-title-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
 
-    .gallery-box:hover {
-      box-shadow: 0 0 20px #00ffff, 0 0 30px #001f3f;
-      transform: scale(1.02);
-    }
+  background: rgba(255, 255, 255, 0.35); /* light glass */
+  backdrop-filter: blur(2px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
 
-    #fullscreenViewer {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(0,0,0,0.85);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-    }
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  border: 1px solid rgba(255,255,255,0.4);
 
-    #fullscreenImage {
-      max-width: 90vw;
-      max-height: 90vh;
-      border-radius: 12px;
-    }
+  z-index: -1;
+}
 
-    .add-image-btn {
-      display: block;
-      margin: 20px auto;
-      padding: 12px 20px;
-      background: #004e92;
-      color: #fff;
-      font-size: 1rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
 
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 1.8rem;
-      }
-      .gallery-box {
-        width: calc(50% - 10px);
-      }
-      .gallery-box img {
-        height: 160px;
-      }
-      .caption {
-        font-size: 0.9rem;
-      }
-    }
-  </style>
+.gallery-title-box h1 {
+  font-size: 44px;
+  margin-bottom: 10px;
+}
+.gallery-title-box p {
+  font-size: 17px;
+}
+
+/* ================= GALLERY ================= */
+.gallery-section {
+  padding: 90px 20px;
+  background: #f8fafc;
+}
+
+.gallery-wrap {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* ================= FILTER BUTTONS ================= */
+.gallery-filters {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  position: relative;
+  padding: 12px 26px;
+  border-radius: 999px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  background: linear-gradient(135deg, #ffffff, #f1f5f9);
+  color: #001c3d;
+  box-shadow:
+    0 8px 20px rgba(0,0,0,0.08),
+    inset 0 0 0 1px rgba(0,28,61,0.15);
+  transition: all 0.35s ease;
+}
+
+.filter-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, #001c3d, #003b7a);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.35s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+.filter-btn:hover::before,
+.filter-btn.active::before {
+  opacity: 1;
+}
+
+/* ================= GRID ================= */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+ /* SAME SIZE FOR ALL GALLERY IMAGES */
+.gallery-card {
+  position: relative;
+  width: 100%;
+  height: 260px;          /* 🔥 SAME HEIGHT */
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.18);
+}
+
+/* FORCE IMAGE TO FIT NICELY */
+.gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* 🔥 IMPORTANT */
+  display: block;
+}
+
+.gallery-card.hide {
+  display: none;
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ================= LIGHTBOX ================= */
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+#lightbox img {
+  max-width: 90%;
+  max-height: 85%;
+  border-radius: 14px;
+}
+
+#closeLightbox {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 36px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ================= FOOTER ================= */
+.footer-main {
+  background: #001c3d;
+  color: #fff;
+  padding: 60px 20px 20px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.footer-box h3 {
+  margin-bottom: 15px;
+}
+
+.footer-box p,
+.footer-box a {
+  font-size: 14px;
+  color: #dbe4f3;
+  text-decoration: none;
+}
+
+.footer-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-box ul li {
+  margin-bottom: 8px;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 40px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  padding-top: 15px;
+  font-size: 14px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media(max-width:900px){
+  .gallery-grid { grid-template-columns: repeat(2,1fr); }
+  .footer-container { grid-template-columns: 1fr; text-align: center; }
+}
+@media(max-width:520px){
+  .gallery-grid { grid-template-columns: 1fr; }
+}
+</style>
 </head>
-<body>
-  <h1>Our School Gallery</h1>
 
-  <div class="gallery-container">
-    <div class="gallery-box" onclick="showFullscreen('PURANI BULIDING.jpeg')">
-      <img src="IMG_1747[1].JPG" alt="Old Building">
-      <div class="caption">🏫 Old Building</div>
+<body class="page-reveal">
+
+<!-- ================= HERO ================= -->
+<section class="gallery-hero">
+  <div class="gallery-title-box">
+    <h1>School Gallery</h1>
+    <p>A glimpse into our vibrant campus life and activities</p>
+  </div>
+</section>
+
+<!-- ================= GALLERY ================= -->
+<section class="gallery-section">
+  <div class="gallery-wrap">
+
+    <!-- FILTER -->
+    <div class="gallery-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="event">Event</button>
+      <button class="filter-btn" data-filter="news">News</button>
+      <button class="filter-btn" data-filter="trip">Trip</button>
+      <button class="filter-btn" data-filter="yoga">Yoga</button>
     </div>
-    <div class="gallery-box" onclick="showFullscreen('CHILDS.jpeg')">
-      <img src=iIMG_1747[1].JPG " alt="Students in Class">
-      <div class="caption">👧👦 Kids in Classroom</div>
+
+   <div class="gallery-grid">
+
+  <!-- EVENT PHOTOS -->
+  <div class="gallery-card" data-category="event">
+    <img src="event.jpeg" alt="School Event">
+  </div>
+  <div class="gallery-card" data-category="event">
+    <img src="event1.jpeg" alt="School Event">
+  </div>
+  <div class="gallery-card" data-category="event">
+    <img src="event2.jpeg" alt="School Event">
+  </div>
+  <div class="gallery-card" data-category="event">
+    <img src="event3.jpeg" alt="School Event">
+  </div>
+  <div class="gallery-card" data-category="event">
+    <img src="event4.jpeg" alt="School Event">
+  </div>
+  <div class="gallery-card" data-category="event">
+    <img src="event5.jpeg" alt="School Event">
+  </div>
+  <div class="gallery-card" data-category="event">
+    <img src="event6.jpeg" alt="School Event">
+  </div>
+  <div class="gallery-card" data-category="event">
+    <img src="event7.jpeg" alt="School Event">
+  </div>
+  <div class="gallery-card" data-category="event">
+    <img src="event8.jpeg" alt="School Event">
+  </div>
+  <div class="gallery-card" data-category="event">
+    <img src="event9.jpeg" alt="School Event">
+  </div>
+  <div class="gallery-card" data-category="event">
+    <img src="event10.jpeg" alt="School Event">
+  </div>
+
+  <!-- TRIP PHOTOS (FIXED: NOW INSIDE GRID) -->
+  <div class="gallery-card" data-category="trip">
+    <img src="trip.jpeg" alt="School Trip">
+  </div>
+  <div class="gallery-card" data-category="trip">
+    <img src="trip1.jpeg" alt="Educational Trip">
+  </div>
+  <div class="gallery-card" data-category="trip">
+    <img src="trip2.jpeg" alt="Students Trip">
+  </div>
+  <div class="gallery-card" data-category="trip">
+    <img src="trip3.jpeg" alt="School Picnic Trip">
+  </div>
+  <div class="gallery-card" data-category="trip">
+    <img src="trip4.jpeg" alt="Learning Trip">
+  </div>
+   
+  <div class="gallery-card" data-category="trip">
+    <img src="trip6.jpeg" alt="Students Educational Tour">
+</div>
+
+  <!-- NEWS PHOTOS -->
+  <div class="gallery-card" data-category="news">
+    <img src="news.jpeg" alt="School News">
+  </div>
+  <div class="gallery-card" data-category="news">
+    <img src="news1.jpeg" alt="School News">
+  </div>
+  <div class="gallery-card" data-category="news">
+    <img src="news2.jpeg" alt="School News">
+  </div>
+  <div class="gallery-card" data-category="news">
+    <img src="news3.jpeg" alt="School News">
+  </div>
+  <div class="gallery-card" data-category="news">
+    <img src="news4.jpeg" alt="School News">
+  </div>
+
+  <!-- YOGA PHOTOS -->
+  <div class="gallery-card" data-category="yoga">
+    <img src="yoga.jpeg" alt="Yoga Session">
+  </div>
+  <div class="gallery-card" data-category="yoga">
+    <img src="yoga1.jpeg" alt="Morning Yoga">
+  </div>
+  <div class="gallery-card" data-category="yoga">
+    <img src="yoga2.jpeg" alt="Students Practicing Yoga">
+  </div>
+  <div class="gallery-card" data-category="yoga">
+    <img src="yoga3.jpeg" alt="Yoga Day Celebration">
+  </div>
+  <div class="gallery-card" data-category="yoga">
+    <img src="yoga4.jpeg" alt="Yoga Activity at School">
+  </div>
+
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer-main">
+  <div class="footer-container">
+    <div class="footer-box">
+      <h3>B.S. SEN. SEC. SCHOOL</h3>
+      <p>Affiliated to CBSE, New Delhi</p>
+      <p>Affiliation No.: 2131580</p>
+      <p>School Code: 55069</p>
     </div>
-    <div class="gallery-box" onclick="showFullscreen('STUDENTS.jpeg')">
-      <img src="IMG_1747[1].JPG" alt="Playground">
-      <div class="caption">🏃‍♂️ Playground Activities</div>
+
+    <div class="footer-box">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul>
     </div>
-    <div class="gallery-box" onclick="showFullscreen('activity1.jpg')">
-      <img src="IMG_1747[1].JPG " alt="Cultural Program">
-      <div class="caption">🎭 Cultural Program</div>
-    </div>
-    <div class="gallery-box" onclick="showFullscreen('activity2.jpg')">
-      <img src="IMG_1747[1].JPG" alt="Sports Event">
-      <div class="caption">🏏 Sports Event</div>
-    </div>
-    <div class="gallery-box" onclick="showFullscreen('independence.jpg')">
-      <img src="IMG_1747[1].JPG" alt="Independence Day">
-      <div class="caption">🇮🇳 Independence Day</div>
-    </div>
-    <div class="gallery-box" onclick="showFullscreen('event1.jpg')">
-      <img src="IMG_1747[1].JPG" alt="Annual Day">
-      <div class="caption">🎉 Annual Day</div>
-    </div>
-    <div class="gallery-box" onclick="showFullscreen('science.jpg')">
-      <img src="IMG_1747[1].JPG" alt="Science Fair">
-      <div class="caption">🔬 Science Fair</div>
-    </div>
-    <div class="gallery-box" onclick="showFullscreen('teacher_day.jpg')">
-      <img src="IMG_1747[1].JPG" alt="Teacher's Day">
-      <div class="caption">👩‍🏫 Teacher's Day</div>
+
+    <div class="footer-box">
+      <h3>Contact</h3>
+      <p>📍 Salempur Khadar, UP</p>
+      <p>📞 +91-98765-43210</p>
+      <p>✉️ info@bsschool.in</p>
     </div>
   </div>
 
-  <!-- Fullscreen Viewer -->
-  <div id="fullscreenViewer" onclick="closeFullscreen()">
-    <img id="fullscreenImage" src="" alt="Zoomed">
+  <div class="footer-bottom">
+    © <span id="year"></span> B.S. SEN. SEC. SCHOOL | Designed with ❤️ by <strong>Parth Sharma</strong>
   </div>
+</footer>
 
-  <script>
-    const viewer = document.getElementById("fullscreenViewer");
-    const image = document.getElementById("fullscreenImage");
+<!-- ================= LIGHTBOX ================= -->
+<div id="lightbox" aria-hidden="true">
+  <span id="closeLightbox" role="button" tabindex="0" aria-label="Close">&times;</span>
+  <img id="lightboxImg" alt="Gallery image">
+</div>
 
-    function showFullscreen(src) {
-      image.src = src;
-      viewer.style.display = "flex";
-      history.pushState({ fullscreen: true }, "");
-    }
+<script>
+window.onload = () => document.body.classList.add("active");
 
-    function closeFullscreen() {
-      viewer.style.display = "none";
-      image.src = "";
-      if (history.state?.fullscreen) {
-        history.back();
-      }
-    }
+/* FILTER */
+const buttons = document.querySelectorAll(".filter-btn");
+const cards = document.querySelectorAll(".gallery-card");
 
-    window.addEventListener("popstate", (event) => {
-      if (event.state?.fullscreen) {
-        closeFullscreen();
-      }
+buttons.forEach(btn=>{
+  btn.onclick=()=>{
+    buttons.forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    const filter = btn.dataset.filter;
+    cards.forEach(card=>{
+      card.classList.toggle("hide", filter!=="all" && card.dataset.category!==filter);
     });
-  </script>
+  }
+});
+
+/* LIGHTBOX */
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+
+cards.forEach(card=>{
+  card.onclick=()=>{
+    lightboxImg.src = card.querySelector("img").src;
+    lightbox.style.display="flex";
+  }
+});
+
+document.getElementById("closeLightbox").onclick=()=>lightbox.style.display="none";
+lightbox.onclick=e=>{ if(e.target===lightbox) lightbox.style.display="none"; };
+
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>

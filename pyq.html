@@ -3,295 +3,250 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CBSE Class 12 & 10 PYQs - B.S. SEN. SEC. SCHOOL</title>
+  <title>CBSE PYQs | B.S. SEN. SEC. SCHOOL</title>
+  <meta name="description" content="Download CBSE previous year question papers (PYQs) for Class 10 and Class 12 by subject and year.">
+  <meta name="keywords" content="CBSE PYQ, previous year question papers, Class 10 PYQ, Class 12 PYQ, Maths PYQ, Physics PYQ, Chemistry PYQ, Biology PYQ, English PYQ, Hindi PYQ">
+  <meta name="author" content="B.S. SEN. SEC. SCHOOL">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="school_logo.webp">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
-    body {
-      background: #f4f9ff;
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    h2 {
-      text-align: center;
-      font-size: 2rem;
-      color: #002b5b;
-      margin: 30px 0 20px;
-    }
-
-    section {
-      margin-bottom: 60px;
-    }
-
-    .accordion-container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 0 15px;
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-    }
-
-    .subject-section {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-    }
-
-    .subject-btn {
-      background: linear-gradient(90deg, #000428, #004e92);
-      color: #ffffff;
-      padding: 14px 18px;
-      font-size: 1.05rem;
-      font-weight: 800;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      white-space: nowrap;
-      letter-spacing: 0.3px;
-    }
-
-    .year-grid {
-      display: none;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin: 16px 0 30px;
-      justify-content: center;
-      width: 100%;
-    }
-
-    .year-grid.active {
-      display: flex;
-    }
-
-     .flip-card {
-  background-color: transparent;
-  width: 90px;
-  height: 90px;
-  perspective: 1000px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  will-change: transform;
-}
-
-.flip-card.clicked {
-  width: 220px;
-  height: 160px;
-}
-
-.flip-card-inner {
+    .page-reveal { opacity: 0; filter: blur(12px); transform: scale(1.02); transition: 1s ease; }
+    .page-reveal.active { opacity: 1; filter: blur(0); transform: scale(1); }
+    .gallery-hero { position: relative; padding: 120px 20px; text-align: center; color: #fff; background: url('img1.jpg') center/cover no-repeat; }
+ .gallery-title-box {
   position: relative;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-  transform-style: preserve-3d;
-  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1); /* smoother */
-  will-change: transform;
+  z-index: 2;
+  max-width: 760px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.12);
+
+  /* Isse editor ki red line hat jayegi aur mobile support bhi badh jayega */
+  -webkit-backdrop-filter: blur(3px); 
+  backdrop-filter: blur(3px);
+
+  padding: 40px;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+   .gallery-title-box h4 {
+  color: #000000;  /* Black */
+  font-weight: 600;
 }
 
-    .flip-card.clicked .flip-card-inner {
-      transform: rotateY(180deg);
-    }
-
-    .flip-card-front,
-    .flip-card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      backface-visibility: hidden;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    }
-
-    .flip-card-front {
-      background: linear-gradient(135deg, #004e92, #000428);
-      color: #fff;
-      font-size: 1rem;
-    }
-
-    .flip-card-back {
-      background: #000428;
-      color: #fff;
-      transform: rotateY(180deg);
-      flex-direction: column;
-      gap: 8px;
-      padding: 8px;
-      font-weight: 500;
-    }
-
-    .flip-card-back a {
-      background: #ffffff;
-      color: #001f3f;
-      padding: 6px 10px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      transition: 0.3s ease;
-    }
-
-    .flip-card-back a:hover {
-      background: #0078ff;
-      color: #fff;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px 10px;
-      background: #000428;
-      color: #fff;
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 480px) {
-      h2 {
-        font-size: 1.4rem;
-      }
-
-      .subject-btn {
-        font-size: 0.9rem;
-        padding: 10px 12px;
-      }
-
-      .flip-card.clicked {
-        width: 200px;
-        height: 150px;
-      }
-
-      .flip-card {
-        width: 80px;
-        height: 80px;
-      }
-
-      .flip-card-back a {
-        font-size: 0.75rem;
-        padding: 5px 8px;
-      }
-    }
+body { background: #f4f9ff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; }
+h2 { text-align: center; font-size: 2rem; color: #002b5b; margin: 30px 0 20px; }
+    section { margin-bottom: 60px; }
+    .accordion-container { max-width: 600px; margin: 0 auto; padding: 0 15px; display: flex; flex-direction: column; gap: 15px; }
+    .subject-section { display: flex; flex-direction: column; width: 100%; }
+    .subject-btn { background: linear-gradient(90deg, #000428, #004e92); color: #ffffff; padding: 14px 18px; font-size: 1.05rem; font-weight: 800; border: none; border-radius: 10px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 12px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); width: 100%; text-align: left; }
+    .year-grid { max-height: 0; overflow: hidden; opacity: 0; transform: translateY(-6px); transition: 0.5s ease; display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; width: 100%; }
+    .year-grid.active { max-height: 1000px; opacity: 1; transform: translateY(0); margin: 16px 0 30px; }
+    .flip-card { width: 90px; height: 90px; perspective: 1200px; cursor: pointer; }
+    .flip-card.clicked { width: 220px; height: 160px; }
+    .flip-card-inner { width: 100%; height: 100%; transition: 0.55s; transform-style: preserve-3d; }
+    .flip-card.clicked .flip-card-inner { transform: rotateY(180deg); }
+    .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; border-radius: 12px; backface-visibility: hidden; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+    .flip-card-front { background: linear-gradient(135deg,#004e92,#000428); color: #fff; font-weight: bold; }
+    .flip-card-back { background: #000428; color: #fff; transform: rotateY(180deg); flex-direction: column; gap: 8px; }
+    .flip-card-back a { background: #fff; padding: 6px 10px; border-radius: 5px; font-size: 0.8rem; text-decoration: none; color: #001f3f; width: 80%; text-align: center; font-weight: bold; }
   </style>
 </head>
-<body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index.html">🏠 Home</a></li>
+
+<body class="page-reveal">
+<!-- ================= TOP INFO + NAV ================= -->
+<div class="top-info">
+  <div class="header-content">
+    <div class="logo-left">
+      <img src="school_logo.webp" alt="School Logo">
+    </div>
+    <div class="school-title">
+      <h1>B.S. SENIOR SECONDARY <span>SCHOOL</span></h1>
+      <p>Affiliated to CBSE, New Delhi</p>
+    </div>
+  </div>
+</div>
+
+<header>
+  <div class="nav-container">
+    <div class="menu-toggle" id="menuToggle">☰</div>
+    <nav class="navbar">
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="pyq.html" class="active">CBSE PYQ</a></li>
       </ul>
     </nav>
-  </header>
+  </div>
+</header>
+<section class="gallery-hero">
+  <div class="gallery-title-box">
+    <h1>CBSE Previous Year Question Papers</h1>
+    <h4 class="subtitle">Class 12 & Class 10 • Download Subject-wise PYQs</h4>
+  </div>
+</section>
 
-  <div style="text-align: center; margin-bottom: 20px;">
-    <img src="school logo.JPEG" alt="School Logo" style="width: 120px; max-width: 80%; height: auto;" />
+<section>
+  <h2>📚 Class 12 CBSE PYQs</h2>
+  <div class="accordion-container">
+    
+    <div class="subject-section">
+      <button class="subject-btn" onclick="toggleSub(this)"><i class="fas fa-square-root-alt"></i> Mathematics</button>
+      <div class="year-grid">
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2025</div><div class="flip-card-back"><a href="Maths 12th 2025.pdf" target="_blank">Set 1</a><a href="Maths 12th 2025@2.pdf" target="_blank">Set 2</a><a href="Maths 12th 2025@3.pdf" target="_blank">Set 3</a></div></div></div>
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2024</div><div class="flip-card-back"><a href="Maths 12th 2024.pdf" target="_blank">Set 1</a><a href="Maths 12th 2024@2.pdf" target="_blank">Set 2</a><a href="Maths 12th 2024@3.pdf" target="_blank">Set 3</a></div></div></div>
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2023</div><div class="flip-card-back"><a href="Maths 12th 2023.pdf" target="_blank">Set 1</a><a href="Maths 12th 2023@2.pdf" target="_blank">Set 2</a><a href="Maths 12th 2023@3.pdf" target="_blank">Set 3</a></div></div></div>
+      </div>
+    </div>
+
+    <div class="subject-section">
+      <button class="subject-btn" onclick="toggleSub(this)"><i class="fas fa-atom"></i> Physics</button>
+      <div class="year-grid">
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2025</div><div class="flip-card-back"><a href="Physics 12th 2025.pdf" target="_blank">Set 1</a><a href="Physics 12th 2025 @2.pdf" target="_blank">Set 2</a><a href="Physics 12th 2025 @3.pdf" target="_blank">Set 3</a></div></div></div>
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2024</div><div class="flip-card-back"><a href="Physics 12th 2024.pdf" target="_blank">Set 1</a><a href="Physics 12th 2024@2.pdf" target="_blank">Set 2</a><a href="Physics 12th 2024@3.pdf" target="_blank">Set 3</a></div></div></div>
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2023</div><div class="flip-card-back"><a href="Physics 12th 2023.pdf" target="_blank">Set 1</a><a href="Physics 12th 2023@2.pdf" target="_blank">Set 2</a><a href="Physics 12th 2023 @3.pdf" target="_blank">Set 3</a></div></div></div>
+      </div>
+    </div>
+
+    <div class="subject-section">
+      <button class="subject-btn" onclick="toggleSub(this)"><i class="fas fa-vials"></i> Chemistry</button>
+      <div class="year-grid">
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2025</div><div class="flip-card-back"><a href="Chemistry 12th 2025.pdf" target="_blank">Set 1</a><a href="Chemistry 12th 2025@2.pdf" target="_blank">Set 2</a><a href="Chemistry 12th 2025@3.pdf" target="_blank">Set 3</a></div></div></div>
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2024</div><div class="flip-card-back"><a href="Chemistry 12th 2024.pdf" target="_blank">Set 1</a><a href="Chemistry 12th 2024@2.pdf" target="_blank">Set 2</a><a href="Chemistry 12th 2024@3.pdf" target="_blank">Set 3</a></div></div></div>
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2023</div><div class="flip-card-back"><a href="Chemistry 12th 2023.pdf" target="_blank">Set 1</a><a href="Chemistry 12th 2023@2.pdf" target="_blank">Set 2</a><a href="Chemistry 12th 2023@3.pdf" target="_blank">Set 3</a></div></div></div>
+      </div>
+    </div>
+
+    <div class="subject-section">
+      <button class="subject-btn" onclick="toggleSub(this)"><i class="fas fa-dna"></i> Biology</button>
+      <div class="year-grid">
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2025</div><div class="flip-card-back"><a href="Biology 12th 2025.pdf" target="_blank">Set 1</a><a href="Biology 12th 2025@2.pdf" target="_blank">Set 2</a><a href="Biology 12th 2025 @3.pdf" target="_blank">Set 3</a></div></div></div>
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2024</div><div class="flip-card-back"><a href="Biology 12th 2024.pdf" target="_blank">Set 1</a><a href="Biology 12th 2024 @2.pdf" target="_blank">Set 2</a><a href="Biology 12th 2024 @3.pdf" target="_blank">Set 3</a></div></div></div>
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2023</div><div class="flip-card-back"><a href="Biology 12th 2023.pdf" target="_blank">Set 1</a><a href="Biology 12th 2023 @2.pdf" target="_blank">Set 2</a><a href="Biology 12th 2023@3.pdf" target="_blank">Set 3</a></div></div></div>
+      </div>
+    </div>
+
+    <div class="subject-section">
+      <button class="subject-btn" onclick="toggleSub(this)"><i class="fas fa-book-open"></i> English Core</button>
+      <div class="year-grid">
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2025</div><div class="flip-card-back"><a href="english 12th 2025.pdf" target="_blank">Set 1</a><a href="english 12th 2025 @2.pdf" target="_blank">Set 2</a><a href="english 12th 2025 @ 3.pdf" target="_blank">Set 3</a></div></div></div>
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2024</div><div class="flip-card-back"><a href="english 12th 2024.pdf" target="_blank">Set 1</a><a href="english 12th 2024 @2.pdf" target="_blank">Set 2</a><a href="english 12th 2024@3.pdf" target="_blank">Set 3</a></div></div></div>
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2023</div><div class="flip-card-back"><a href="english 12th 2023.pdf" target="_blank">Set 1</a><a href="english 12th 2023@2.pdf" target="_blank">Set 2</a><a href="english 12th 2023@3.pdf" target="_blank">Set 3</a></div></div></div>
+      </div>
+    </div>
+
+    <div class="subject-section">
+      <button class="subject-btn" onclick="toggleSub(this)"><i class="fas fa-pen"></i> Hindi Core</button>
+      <div class="year-grid">
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2025</div><div class="flip-card-back"><a href="hindi 12th 2025.pdf" target="_blank">Set 1</a><a href="hindi 12th 2025 @2.pdf" target="_blank">Set 2</a><a href="hindi 12th 2025 @3.pdf" target="_blank">Set 3</a></div></div></div>
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2024</div><div class="flip-card-back"><a href="hindi 12th 2024.pdf" target="_blank">Set 1</a><a href="hindi 12th 2024 @2.pdf" target="_blank">Set 2</a><a href="hindi 12th 2024 @3.pdf" target="_blank">Set 3</a></div></div></div>
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2023</div><div class="flip-card-back"><a href="hindi 12th 2023.pdf" target="_blank">Set 1</a><a href="hindi 12th 2023@2.pdf" target="_blank">Set 2</a><a href="hindi 12th 2023@3.pdf" target="_blank">Set 3</a></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>📘 Class 10 CBSE PYQs</h2>
+  <div class="accordion-container">
+    
+    <div class="subject-section">
+      <button class="subject-btn" onclick="toggleSub(this)"><i class="fas fa-calculator"></i> Mathematics</button>
+      <div class="year-grid">
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2025</div><div class="flip-card-back"><a href="Maths 10th 2025.pdf" target="_blank">Set 1</a><a href="Maths 10th 2025 @2.pdf" target="_blank">Set 2</a><a href="Maths 10th 2025 @3.pdf" target="_blank">Set 3</a></div></div></div>
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2024</div><div class="flip-card-back"><a href="Maths 10th 2024.pdf" target="_blank">Set 1</a><a href="Maths 10th 2024 @2.pdf" target="_blank">Set 2</a><a href="Maths 10th 2024 @3.pdf" target="_blank">Set 3</a></div></div></div>
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2023</div><div class="flip-card-back"><a href="Maths 10th 2023.pdf" target="_blank">Set 1</a><a href="Maths 10th 2023 @2.pdf" target="_blank">Set 2</a><a href="Maths 10th 2023 @3.pdf" target="_blank">Set 3</a></div></div></div>
+      </div>
+    </div>
+
+    <div class="subject-section">
+      <button class="subject-btn" onclick="toggleSub(this)"><i class="fas fa-flask"></i> Science</button>
+      <div class="year-grid">
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2025</div><div class="flip-card-back"><a href="Science 10th 2025.pdf" target="_blank">Set 1</a><a href="Science 10th 2025@2.pdf" target="_blank">Set 2</a><a href="Science 10th 2025@3.pdf" target="_blank">Set 3</a></div></div></div>
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2024</div><div class="flip-card-back"><a href="Science 10th 2024.pdf" target="_blank">Set 1</a><a href="Science 10th 2024@2.pdf" target="_blank">Set 2</a><a href="Science 10th 2024@3.pdf" target="_blank">Set 3</a></div></div></div>
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2023</div><div class="flip-card-back"><a href="Science 10th 2023.pdf" target="_blank">Set 1</a><a href="Science 10th 2023@2.pdf" target="_blank">Set 2</a><a href="Science 10th 2023@3.pdf" target="_blank">Set 3</a></div></div></div>
+      </div>
+    </div>
+
+    <div class="subject-section">
+      <button class="subject-btn" onclick="toggleSub(this)"><i class="fas fa-globe"></i> Social Science</button>
+      <div class="year-grid">
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2025</div><div class="flip-card-back"><a href="Social science 10th 2025.pdf" target="_blank">Set 1</a><a href="Social science 10th 2025@2.pdf" target="_blank">Set 2</a><a href="Social science 10th 2025@3.pdf" target="_blank">Set 3</a></div></div></div>
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2024</div><div class="flip-card-back"><a href="Social science 10th 2024.pdf" target="_blank">Set 1</a><a href="Social science 10th 2024@2.pdf" target="_blank">Set 2</a><a href="Social science 10th 2024@3.pdf" target="_blank">Set 3</a></div></div></div>
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2023</div><div class="flip-card-back"><a href="Social science 10th 2023.pdf" target="_blank">Set 1</a><a href="Social science 10th 2023 @2.pdf" target="_blank">Set 2</a><a href="Social science 10th 2023@3.pdf" target="_blank">Set 3</a></div></div></div>
+      </div>
+    </div>
+
+    <div class="subject-section">
+      <button class="subject-btn" onclick="toggleSub(this)"><i class="fas fa-language"></i> English</button>
+      <div class="year-grid">
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2025</div><div class="flip-card-back"><a href="English 10th 2025.pdf" target="_blank">Set 1</a><a href="English 10th 2025@2.pdf" target="_blank">Set 2</a><a href="English 10th 2025@3.pdf" target="_blank">Set 3</a></div></div></div>
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2024</div><div class="flip-card-back"><a href="English 10th 2024.pdf" target="_blank">Set 1</a><a href="English 10th 2024 @2.pdf" target="_blank">Set 2</a><a href="English 10th 2024@3.pdf" target="_blank">Set 3</a></div></div></div>
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2023</div><div class="flip-card-back"><a href="English 10th 2023.pdf" target="_blank">Set 1</a><a href="English 10th 2023@2.pdf" target="_blank">Set 2</a><a href="English 10th 2023@3.pdf" target="_blank">Set 3</a></div></div></div>
+      </div>
+    </div>
+
+    <div class="subject-section">
+      <button class="subject-btn" onclick="toggleSub(this)"><i class="fas fa-pen"></i> Hindi</button>
+      <div class="year-grid">
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2025</div><div class="flip-card-back"><a href="Hindi 10th 2025.pdf" target="_blank">Set 1</a><a href="Hindi 10th 2025@2.pdf" target="_blank">Set 2</a><a href="Hindi 10th 2025@3.pdf" target="_blank">Set 3</a></div></div></div>
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2024</div><div class="flip-card-back"><a href="Hindi 10th 2024.pdf" target="_blank">Set 1</a><a href="Hindi 10th 2024@2.pdf" target="_blank">Set 2</a><a href="Hindi 10th 2024@3.pdf" target="_blank">Set 3</a></div></div></div>
+        <div class="flip-card" onclick="toggleCard(this)"><div class="flip-card-inner"><div class="flip-card-front">2023</div><div class="flip-card-back"><a href="Hindi 10th 2023.pdf" target="_blank">Set 1</a><a href="Hindi 10th 2023@2.pdf" target="_blank">Set 2</a><a href="Hindi 10th 2023@3.pdf" target="_blank">Set 3</a></div></div></div>
+      </div>
+    </div>
+  </div>
+  <!-- ================= FOOTER ================= -->
+<footer class="footer-main">
+  <div class="footer-container">
+    <div class="footer-box">
+      <h3>B.S. SEN. SEC. SCHOOL</h3>
+      <p>A leading co-educational senior secondary school committed to excellence in academics, discipline, and holistic development.</p>
+      <p><strong>Affiliated to CBSE, New Delhi</strong></p>
+      <p>Affiliation No.: 2131580</p>
+      <p>School Code: 55069</p>
+    </div>
+
+    <div class="footer-box">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-box">
+      <h3>Contact Us</h3>
+      <p>📍 Salempur Khadar, Uttar Pradesh</p>
+      <p>📞 +91-98765-43210</p>
+      <p>✉️ info@bsschool.in</p>
+    </div>
   </div>
 
-  <section>
-    <h2>📚 Class 12 CBSE PYQs (2025 - 2022)</h2>
-    <div class="accordion-container" id="class12"></div>
-  </section>
+  <div class="footer-bottom">
+    <p>© <span id="year"></span> B.S. SEN. SEC. SCHOOL | Designed with ❤️ by <strong>Parth Sharma</strong></p>
+  </div>
+</footer>
+</section>
 
-  <section>
-    <h2>📘 Class 10 CBSE PYQs (2025 - 2022)</h2>
-    <div class="accordion-container" id="class10"></div>
-  </section>
-
-  <footer>
-    &copy; 2025 B.S. SEN. SEC. SCHOOL. All rights reserved.
-  </footer>
-
-  <script src="https://kit.fontawesome.com/a3e4fbe6df.js" crossorigin="anonymous"></script>
-  <script>
-    const class12Subjects = [
-      { name: "Mathematics", icon: "fa-square-root-alt", folder: "Math (1)" },
-      { name: "Physics", icon: "fa-atom", folder: "Physics" },
-      { name: "Chemistry", icon: "fa-vials", folder: "Chemistry" },
-      { name: "Biology", icon: "fa-dna", folder: "Biology" },
-      { name: "English", icon: "fa-book-open", folder: "Eng_Core" },
-      { name: "Hindi", icon: "fa-pen", folder: "Hindi_Core" }
-    ];
-
-    const class10Subjects = [
-      { name: "Mathematics", icon: "fa-calculator", folder: "maths" },
-      { name: "Science", icon: "fa-flask", folder: "science" },
-      { name: "Social Science", icon: "fa-globe", folder: "sst" },
-      { name: "English", icon: "fa-language", folder: "english" },
-      { name: "Hindi", icon: "fa-pen", folder: "hindi" }
-    ];
-
-    function createSubjectHTML(sub, isClass12) {
-      const container = document.createElement("div");
-      container.className = "subject-section";
-
-      const button = document.createElement("button");
-      button.className = "subject-btn";
-      button.innerHTML = `<i class="fas ${sub.icon}"></i> ${sub.name}`;
-
-      const yearGrid = document.createElement("div");
-      yearGrid.className = "year-grid";
-
-      ["2025", "2024", "2023", "2022"].forEach(year => {
-        const card = document.createElement("div");
-        card.className = "flip-card";
-
-        const inner = document.createElement("div");
-        inner.className = "flip-card-inner";
-
-        const front = document.createElement("div");
-        front.className = "flip-card-front";
-        front.textContent = year;
-
-        const back = document.createElement("div");
-        back.className = "flip-card-back";
-
-        ["Set 1", "Set 2", "Set 3", "Set 4"].forEach(set => {
-          const link = document.createElement("a");
-          link.href = isClass12
-            ? `expanded/${sub.folder}/${set.replace(" ", "-")}.pdf`
-            : `pyqs/class10/${sub.folder}/${set.replace(" ", "-")}.pdf`;
-          link.textContent = set;
-          link.target = "_blank";
-          back.appendChild(link);
-        });
-
-        inner.appendChild(front);
-        inner.appendChild(back);
-        card.appendChild(inner);
-
-        // ✅ Ensure only one card is flipped at a time in a subject
-        card.onclick = () => {
-          [...yearGrid.children].forEach(c => {
-            if (c !== card) c.classList.remove("clicked");
-          });
-          card.classList.toggle("clicked");
-        };
-
-        yearGrid.appendChild(card);
-      });
-
-      button.onclick = () => yearGrid.classList.toggle("active");
-
-      container.appendChild(button);
-      container.appendChild(yearGrid);
-
-      return container;
-    }
-
-    class12Subjects.forEach(sub => {
-      const html = createSubjectHTML(sub, true);
-      document.getElementById("class12").appendChild(html);
-    });
-
-    class10Subjects.forEach(sub => {
-      const html = createSubjectHTML(sub, false);
-      document.getElementById("class10").appendChild(html);
-    });
-  </script>
+<script>
+  function toggleSub(btn) {
+    const grid = btn.nextElementSibling;
+    const wasActive = grid.classList.contains('active');
+    document.querySelectorAll('.year-grid').forEach(g => g.classList.remove('active'));
+    if (!wasActive) grid.classList.add('active');
+  }
+  function toggleCard(card) {
+    const wasClicked = card.classList.contains('clicked');
+    card.parentElement.querySelectorAll('.flip-card').forEach(c => c.classList.remove('clicked'));
+    if (!wasClicked) card.classList.add('clicked');
+  }
+  window.addEventListener("load", () => { document.body.classList.add("active"); });
+const menuToggle = document.querySelector('.menu-toggle');
+const navbar = document.querySelector('.navbar');
+if (menuToggle && navbar) {
+  menuToggle.addEventListener('click', function() {
+    navbar.classList.toggle('active');
+  });
+}
+</script>
 </body>
 </html>
