@@ -39,17 +39,112 @@ h2 { text-align: center; font-size: 2rem; color: #002b5b; margin: 30px 0 20px; }
     section { margin-bottom: 60px; }
     .accordion-container { max-width: 600px; margin: 0 auto; padding: 0 15px; display: flex; flex-direction: column; gap: 15px; }
     .subject-section { display: flex; flex-direction: column; width: 100%; }
-    .subject-btn { background: linear-gradient(90deg, #000428, #004e92); color: #ffffff; padding: 14px 18px; font-size: 1.05rem; font-weight: 800; border: none; border-radius: 10px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 12px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); width: 100%; text-align: left; }
-    .year-grid { max-height: 0; overflow: hidden; opacity: 0; transform: translateY(-6px); transition: 0.5s ease; display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; width: 100%; }
-    .year-grid.active { max-height: 1000px; opacity: 1; transform: translateY(0); margin: 16px 0 30px; }
-    .flip-card { width: 90px; height: 90px; perspective: 1200px; cursor: pointer; }
-    .flip-card.clicked { width: 220px; height: 160px; }
-    .flip-card-inner { width: 100%; height: 100%; transition: 0.55s; transform-style: preserve-3d; }
-    .flip-card.clicked .flip-card-inner { transform: rotateY(180deg); }
+    h2 { font-size: clamp(1.4rem, 5.5vw, 2rem); }
+
+    /* Instant tap + no 300ms delay feel */
+    .subject-btn,
+    .flip-card,
+    .flip-card-back a {
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .subject-btn {
+      background: linear-gradient(90deg, #000428, #004e92);
+      color: #ffffff;
+      padding: 14px 18px;
+      font-size: clamp(0.98rem, 3.6vw, 1.05rem);
+      font-weight: 800;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 180ms ease, filter 180ms ease;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      text-align: left;
+      will-change: transform;
+    }
+
+    .subject-btn:active { transform: scale(0.99); }
+
+    /* PYQ accordion animation moved to GPU-friendly transforms */
+    .year-grid {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transform: translate3d(0, -8px, 0);
+      transition: max-height 420ms ease, opacity 260ms ease, transform 420ms ease;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      width: 100%;
+      will-change: transform, opacity;
+    }
+
+    .year-grid.active {
+      max-height: 1100px;
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+      margin: 16px 0 30px;
+    }
+
+    /* Flip cards: keep size fixed (no width/height animation = no jank) */
+    .flip-card {
+      width: clamp(84px, 18vw, 96px);
+      height: clamp(84px, 18vw, 96px);
+      perspective: 1200px;
+      cursor: pointer;
+      position: relative;
+      flex: 0 0 auto;
+    }
+
+    .flip-card-inner {
+      width: 100%;
+      height: 100%;
+      transition: transform 520ms cubic-bezier(0.2, 0.75, 0.2, 1);
+      transform-style: preserve-3d;
+      transform: translate3d(0, 0, 0);
+      will-change: transform;
+    }
+
+    .flip-card.clicked .flip-card-inner {
+      transform: translate3d(0, 0, 0) rotateY(180deg);
+    }
+
     .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; border-radius: 12px; backface-visibility: hidden; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
     .flip-card-front { background: linear-gradient(135deg,#004e92,#000428); color: #fff; font-weight: bold; }
-    .flip-card-back { background: #000428; color: #fff; transform: rotateY(180deg); flex-direction: column; gap: 8px; }
-    .flip-card-back a { background: #fff; padding: 6px 10px; border-radius: 5px; font-size: 0.8rem; text-decoration: none; color: #001f3f; width: 80%; text-align: center; font-weight: bold; }
+    .flip-card-back {
+      background: #000428;
+      color: #fff;
+      transform: rotateY(180deg);
+      flex-direction: column;
+      gap: 8px;
+      padding: 10px 8px;
+    }
+
+    .flip-card-back a {
+      background: #fff;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      text-decoration: none;
+      color: #001f3f;
+      width: 100%;
+      text-align: center;
+      font-weight: 800;
+      transform: translate3d(0, 0, 0);
+    }
+
+    @media (max-width: 768px) {
+      .gallery-hero { padding: 90px 16px; }
+      .gallery-title-box { padding: 26px 18px; }
+      .accordion-container { padding: 0 12px; }
+      .year-grid { gap: 12px; }
+    }
   </style>
 </head>
 
@@ -228,25 +323,35 @@ h2 { text-align: center; font-size: 2rem; color: #002b5b; margin: 30px 0 20px; }
 </section>
 
 <script>
-  function toggleSub(btn) {
-    const grid = btn.nextElementSibling;
+  // Page reveal
+  window.addEventListener("load", () => {
+    document.body.classList.add("active");
+  }, { once: true });
+
+  // Mobile nav
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navbar = document.querySelector('.navbar');
+  if (menuToggle && navbar) {
+    menuToggle.addEventListener('click', () => {
+      navbar.classList.toggle('active');
+    }, { passive: true });
+  }
+
+  // Backwards-compatible with existing inline handlers.
+  window.toggleSub = function toggleSub(btn) {
+    const grid = btn?.nextElementSibling;
+    if (!grid || !grid.classList.contains('year-grid')) return;
     const wasActive = grid.classList.contains('active');
-    document.querySelectorAll('.year-grid').forEach(g => g.classList.remove('active'));
+    document.querySelectorAll('.year-grid.active').forEach(g => g.classList.remove('active'));
     if (!wasActive) grid.classList.add('active');
-  }
-  function toggleCard(card) {
-    const wasClicked = card.classList.contains('clicked');
-    card.parentElement.querySelectorAll('.flip-card').forEach(c => c.classList.remove('clicked'));
-    if (!wasClicked) card.classList.add('clicked');
-  }
-  window.addEventListener("load", () => { document.body.classList.add("active"); });
-const menuToggle = document.querySelector('.menu-toggle');
-const navbar = document.querySelector('.navbar');
-if (menuToggle && navbar) {
-  menuToggle.addEventListener('click', function() {
-    navbar.classList.toggle('active');
-  });
-}
+  };
+
+  window.toggleCard = function toggleCard(card) {
+    const parent = card?.parentElement;
+    const wasClicked = card?.classList?.contains('clicked');
+    if (parent) parent.querySelectorAll('.flip-card.clicked').forEach(c => c.classList.remove('clicked'));
+    if (card && !wasClicked) card.classList.add('clicked');
+  };
 </script>
 </body>
 </html>

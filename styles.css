@@ -33,6 +33,118 @@ body {
   overflow-x: hidden;
 }
 
+/* =====================
+  MOBILE/RESPONSIVE SAFETY NET
+  - Prevent horizontal scroll
+  - Make media/tables fit small screens
+  - Improve tap responsiveness
+  ===================== */
+
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+img,
+svg,
+video,
+canvas,
+iframe {
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+/* Long text / flex children overflow fix */
+.header-content,
+.nav-container,
+.why-wrap,
+.feature-card,
+.beyond-container,
+.footer-container {
+  min-width: 0;
+}
+
+/* Tap feels instant on mobile */
+.highlight-button,
+.menu-toggle,
+.nav-links a,
+button,
+[role="button"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.highlight-button,
+.menu-toggle,
+.nav-links a,
+button,
+[role="button"] {
+  cursor: pointer;
+}
+
+/* Tables: scrollable on mobile (no page horizontal scroll) */
+table {
+  max-width: 100%;
+  border-collapse: collapse;
+}
+
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Fluid typography (safe + minimal overrides) */
+  body {
+    font-size: clamp(15px, 3.6vw, 17px);
+  }
+
+  .feature-title {
+    font-size: clamp(1.5rem, 5.5vw, 2.1rem);
+  }
+
+  .why-heading {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+  }
+
+  .toppers-title {
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+  }
+
+  .main-heading {
+    font-size: clamp(1.6rem, 6vw, 2.3rem);
+  }
+
+  /* Sections with heavy padding can cause tight layouts */
+  .feature-card {
+    padding: 24px;
+    gap: 22px;
+  }
+
+  .highlight-card {
+    margin: 22px 14px;
+    padding: 26px 20px;
+  }
+
+  /* Tables become horizontally scrollable containers */
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Prevent long cells from forcing page width */
+  th,
+  td {
+    word-break: normal;
+  }
+}
+
 /* GLOBAL BLUR LAYER */
 body::before {
   content: "";
