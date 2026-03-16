@@ -681,6 +681,31 @@ header {
     .ticker-label span { display: none; } /* Show only icon on small screens */
     .ticker-label { padding: 0 15px; }
 }
+
+/* =====================
+  FACILITIES (Our Facilities) - Mobile sizing
+  ===================== */
+@media (max-width: 768px) {
+  .auto-gallery {
+    padding: 44px 0;
+  }
+
+  .auto-gallery h2 {
+    font-size: clamp(1.4rem, 5.5vw, 1.9rem);
+    margin-bottom: 18px;
+  }
+
+  .gallery-card {
+    height: 220px;
+    max-height: 250px;
+    min-width: 170px;
+  }
+
+  .gallery-card img {
+    height: 100%;
+    object-fit: cover;
+  }
+}
   /* =====================
    WHY CHOOSE US – CLEAN YELLOW
    ===================== */
