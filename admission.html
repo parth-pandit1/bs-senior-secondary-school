@@ -435,49 +435,83 @@ header {
       font-size: 0.9rem;
     }
 
-     /* Modern Popup Style */
- .popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 28, 61, 0.85);
-  -webkit-backdrop-filter: blur(8px); /* Safari support */
-  backdrop-filter: blur(8px);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-}
+    /* Premium Success Popup (modern + animated checkmark) */
+    .popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 28, 61, 0.65);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 2000;
+    }
 
-.popup-box {
-  background: #ffffff;
-  padding: 40px 30px;
-  border-radius: 20px;
-  text-align: center;
-  max-width: 400px;
-  width: 90%;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-  transform: translateY(20px);
-  animation: slideUp 0.4s ease forwards;
-}
+    .popup-box {
+      width: min(440px, 92vw);
+      border-radius: 22px;
+      padding: 34px 26px 26px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.55);
+      transform: translate3d(0, 18px, 0) scale(0.98);
+      opacity: 0;
+      animation: popupIn 320ms cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      will-change: transform, opacity;
+    }
 
-@keyframes slideUp {
-  to { transform: translateY(0); opacity: 1; }
-}
+    @keyframes popupIn {
+      to { transform: translate3d(0, 0, 0) scale(1); opacity: 1; }
+    }
 
-.success-icon {
-  font-size: 60px;
-  color: #28a745; /* Success Green */
-  margin-bottom: 15px;
-  animation: bounceIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
+    .success-icon {
+      width: 96px;
+      height: 96px;
+      margin: 0 auto 14px;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: radial-gradient(circle at 30% 30%, rgba(46, 204, 113, 0.22), rgba(46, 204, 113, 0.06));
+      box-shadow: 0 18px 40px rgba(46, 204, 113, 0.28);
+    }
 
-@keyframes bounceIn {
-  0% { transform: scale(0); }
-  100% { transform: scale(1); }
-}
+    .checkmark {
+      width: 62px;
+      height: 62px;
+      display: block;
+    }
+
+    .checkmark__circle {
+      stroke: #2ecc71;
+      stroke-width: 4.5;
+      fill: none;
+      stroke-dasharray: 166;
+      stroke-dashoffset: 166;
+      animation: drawCircle 420ms ease forwards;
+    }
+
+    .checkmark__check {
+      stroke: #2ecc71;
+      stroke-width: 5;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 48;
+      stroke-dashoffset: 48;
+      animation: drawCheck 260ms ease forwards;
+      animation-delay: 240ms;
+    }
+
+    @keyframes drawCircle {
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes drawCheck {
+      to { stroke-dashoffset: 0; }
+    }
 
 .popup-box h3 {
   color: #001c3d;
@@ -715,6 +749,10 @@ header {
       <label for="message">Message</label>
       <textarea id="message" name="message" placeholder="Any message..." rows="4"></textarea>
 
+      <!-- Honeypot (bots fill this; humans never see it) -->
+      <input type="text" name="hp" id="hp" autocomplete="off" tabindex="-1" aria-hidden="true"
+             style="position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;">
+
       <div class="checkbox-container">
         <input type="checkbox" id="confirm" required>
         <label for="confirm">I confirm the above details are correct</label>
@@ -738,7 +776,10 @@ header {
    <div class="popup-overlay" id="popup">
   <div class="popup-box">
     <div class="success-icon">
-      <i class="fas fa-check-circle"></i>
+      <svg class="checkmark" viewBox="0 0 52 52" aria-hidden="true">
+        <circle class="checkmark__circle" cx="26" cy="26" r="24"></circle>
+        <path class="checkmark__check" d="M14 27 L22 35 L38 19"></path>
+      </svg>
     </div>
     <h3>Submission Successful!</h3>
     <p>Thank you for choosing B.S. School. Our team will contact you shortly.</p>
@@ -777,66 +818,138 @@ header {
   </div>
 </footer>
 
-  <script>
+<script>
+  (() => {
+  
+    // Page reveal
     window.addEventListener("load", () => {
-  setTimeout(() => {
-    document.body.classList.add("active");
-  }, 100); // slight delay for smoothness
-});
-    function closePopup() {
-      const popup = document.getElementById("popup");
-      if (popup) popup.style.display = "none";
+      setTimeout(() => document.body.classList.add("active"), 100);
+    });
+  
+    // Navbar toggle
+    const menuBtn = document.getElementById("menuToggle");
+    const navBar = document.getElementById("navbar");
+    if (menuBtn && navBar) {
+      menuBtn.onclick = () => navBar.classList.toggle("active");
     }
-    // 1. MOBILE MENU FIX (Direct function)
-    const menuBtn = document.getElementById('menuToggle');
-    const navBar = document.getElementById('navbar');
-    
-    if(menuBtn) {
-        menuBtn.onclick = function() {
-            navBar.classList.toggle('active');
-        }
+  
+    const form = document.getElementById("admissionForm");
+    const popup = document.getElementById("popup");
+    const yearEl = document.getElementById("year");
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+    if (!form) return;
+  
+    // ✅ FIXED SCRIPT URL
+    function buildScriptUrl() {
+      return "https://script.google.com/macros/s/AKfycbxH_Qtu43Loa1LE6ohNtrl8OzkqCznyFq0LMGax2DyUDY0xUtcIUjMeSLqi34JIl6mxpA/exec";
     }
-
-    // 2. FORM SUBMISSION (No Base64, Hidden Parts instead)
-    const admissionForm = document.getElementById("admissionForm");
-    const successPopup = document.getElementById("popup");
-
-    admissionForm.onsubmit = function(e) {
-        e.preventDefault();
-        
-        const submitBtn = e.target.querySelector('button');
-        submitBtn.innerText = "Processing...";
-        submitBtn.disabled = true;
-
-        // URL ko 3 hisson mein toda hai taaki koi dhoond na sake
-        const p1 = "https://script.google.com/macros/s/";
-        const p2 = "AKfycbz2v6AGqZVTp2Uu4kEu4Lf2-HY-BqIftw_t1fekI4LveIf0ABZcutMj66CpZbSkMobI";
-        const p3 = "/exec";
-        const finalURL = p1 + p2 + p3;
-
-        const data = new FormData(admissionForm);
-        data.append("token", "Krish$@cce");
-
-        fetch(finalURL, {
-            method: "POST",
-            body: data,
-            mode: "no-cors" // Google Sheets ke liye ye safe hai
-        })
-         .then(() => {
-            // Popup dikhayein
-            successPopup.style.display = "flex";
-            admissionForm.reset();
-            // Ab auto-hide hatakar user ke button click ka intezar karenge
-        })
-        .catch(err => {
-            alert("Submission failed. Check Internet!");
-        })
-        .finally(() => {
-            submitBtn.innerText = "Submit";
-            submitBtn.disabled = false;
-        });
+  
+    function strip(v) {
+      return String(v || "").replace(/<[^>]*>/g, "").trim();
+    }
+  
+    function normalizeMobile(v) {
+      const d = strip(v).replace(/\D/g, "");
+      return d.length === 10 ? d : null;
+    }
+  
+    function setLoading(btn) {
+      btn.disabled = true;
+      btn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Sending...`;
+    }
+  
+    function clearLoading(btn) {
+      btn.disabled = false;
+      btn.innerHTML = "Submit";
+    }
+  
+    function showPopup() {
+      popup.style.display = "flex";
+      setTimeout(() => closePopup(), 5000);
+    }
+  
+    window.closePopup = function () {
+      popup.style.display = "none";
+      form.reset();
     };
-    document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+  
+    // Rate limit
+    const KEY = "last_submit";
+    function canSubmit() {
+      const last = localStorage.getItem(KEY);
+      return !last || Date.now() - last > 15000;
+    }
+  
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+  
+      const btn = form.querySelector("button");
+  
+      if (!canSubmit()) {
+        alert("Please wait 15 seconds");
+        return;
+      }
+  
+      setLoading(btn);
+  
+      try {
+        // Honeypot
+        const hp = form.querySelector("#hp");
+        if (hp && hp.value !== "") {
+          clearLoading(btn);
+          return;
+        }
+  
+        // Clean inputs
+        form.querySelectorAll("input, textarea").forEach(el => {
+          el.value = strip(el.value);
+        });
+  
+        // Mobile validation
+        const mobileEl = document.getElementById("mobile");
+        const mobile = normalizeMobile(mobileEl.value);
+        if (!mobile) {
+          alert("Enter valid 10-digit mobile");
+          mobileEl.focus();
+          clearLoading(btn);
+          return;
+        }
+        mobileEl.value = mobile;
+  
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          clearLoading(btn);
+          return;
+        }
+  
+        const data = new FormData(form);
+        data.append("key", "BS_SECRET_786");
+  
+        const res = await fetch(buildScriptUrl(), {
+          method: "POST",
+          body: data
+        });
+  
+        let result = null;
+        try {
+          result = await res.json();
+        } catch {}
+  
+        if (res.ok && result && result.status === "success") {
+          localStorage.setItem(KEY, Date.now());
+          showPopup();
+        } else {
+          alert("Server Error");
+        }
+  
+      } catch (err) {
+        alert("Connection Error");
+      }
+  
+      clearLoading(btn);
+    });
+  
+  })();
+  </script>
 </body>
 </html>

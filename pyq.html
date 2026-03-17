@@ -66,6 +66,7 @@ h2 { text-align: center; font-size: 2rem; color: #002b5b; margin: 30px 0 20px; }
       width: 100%;
       text-align: left;
       will-change: transform;
+      flex: 0 0 auto;
     }
 
     .subject-btn:active { transform: scale(0.99); }
@@ -79,7 +80,9 @@ h2 { text-align: center; font-size: 2rem; color: #002b5b; margin: 30px 0 20px; }
       transition: max-height 300ms ease, opacity 200ms ease, transform 300ms ease;
       display: flex;
       flex-wrap: wrap;
-      gap: 16px;
+      justify-content: center;
+      gap: 20px;
+      align-items: center;
       justify-content: center;
       width: 100%;
       will-change: transform, opacity;
@@ -92,50 +95,74 @@ h2 { text-align: center; font-size: 2rem; color: #002b5b; margin: 30px 0 20px; }
       margin: 16px 0 30px;
     }
 
-    /* Flip cards: keep size fixed (no width/height animation = no jank) */
+    /* Year cards: expandable (no fixed height, no cut-off) */
     .flip-card {
-      width: clamp(96px, 22vw, 120px);
-      height: clamp(96px, 22vw, 120px);
-      perspective: 1200px;
+      width: 220px;
+      height: auto;
+      min-height: 150px;
       cursor: pointer;
       position: relative;
       flex: 0 0 auto;
+      border-radius: 14px;
+      overflow: hidden; /* collapsed state clips the hidden panel */
+      box-shadow: 0 14px 30px rgba(0,0,0,0.16);
+      background: linear-gradient(135deg,#004e92,#000428);
       will-change: transform;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .flip-card.clicked {
+      overflow: visible; /* allow content to push page height naturally */
+      transform: translate3d(0, -2px, 0) scale(1.01);
     }
 
     .flip-card-inner {
       width: 100%;
-      height: 100%;
-      transition: transform 300ms cubic-bezier(0.2, 0.75, 0.2, 1);
-      transform-style: preserve-3d;
-      transform: translate3d(0, 0, 0);
-      will-change: transform;
-    }
-
-    .flip-card.clicked .flip-card-inner {
-      transform: translate3d(0, 0, 0) rotateY(180deg);
-    }
-
-    /* Snappy "clicked" feedback */
-    .flip-card.clicked {
-      animation: pyqPop 300ms ease;
-    }
-
-    @keyframes pyqPop {
-      0% { transform: translate3d(0, 0, 0) scale(1); }
-      60% { transform: translate3d(0, -2px, 0) scale(1.03); }
-      100% { transform: translate3d(0, 0, 0) scale(1); }
-    }
-
-    .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; border-radius: 12px; backface-visibility: hidden; display: flex; justify-content: center; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-    .flip-card-front { background: linear-gradient(135deg,#004e92,#000428); color: #fff; font-weight: bold; }
-    .flip-card-back {
-      background: #000428;
-      color: #fff;
-      transform: rotateY(180deg);
+      height: auto;
+      display: flex;
       flex-direction: column;
-      gap: 8px;
-      padding: 10px 8px;
+    }
+
+    /* Year header */
+    .flip-card-front {
+      position: relative;
+      width: 100%;
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.15rem;
+      letter-spacing: 0.5px;
+      color: #fff;
+      box-shadow: inset 0 -1px 0 rgba(255,255,255,0.12);
+      z-index: 1;
+    }
+
+    /* Sets panel (expands vertically) */
+    .flip-card-back {
+      width: 100%;
+      display: flex;
+      flex-direction: column; /* vertical list */
+      gap: 0;
+      padding: 10px 10px 12px;
+      background: rgba(0,0,0,0.12);
+
+      max-height: 0;           /* collapsed */
+      opacity: 0;
+      transform: translate3d(0, -6px, 0);
+      transition: all 0.2s ease-in-out;
+      will-change: transform, opacity, max-height;
+      pointer-events: none; /* sets are only clickable when expanded */
+      position: relative;
+      z-index: 2;
+    }
+
+    .flip-card.clicked .flip-card-back {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+      /* max-height is set dynamically via JS to avoid any cut-off */
+      pointer-events: auto;
     }
 
     .flip-card-back a {
@@ -146,13 +173,17 @@ h2 { text-align: center; font-size: 2rem; color: #002b5b; margin: 30px 0 20px; }
       text-decoration: none;
       color: #001f3f;
       width: 100%;
+      display: block;
       text-align: center;
       font-weight: 800;
       transform: translate3d(0, 0, 0);
       box-shadow: 0 10px 22px rgba(0,0,0,0.25);
       border: 1px solid rgba(0, 28, 61, 0.12);
-      transition: transform 300ms ease, filter 300ms ease;
+      transition: all 0.2s ease-in-out;
       will-change: transform;
+      margin: 5px 0;
+      padding: 15px;
+      box-sizing: border-box;
     }
 
     .flip-card-back a:active {
@@ -166,15 +197,30 @@ h2 { text-align: center; font-size: 2rem; color: #002b5b; margin: 30px 0 20px; }
       .accordion-container { padding: 0 12px; }
       .year-grid { gap: 12px; }
 
-      /* Larger, premium Set cards on mobile */
+      /* Vertical stack on mobile: year cards become full-width cards */
+      .year-grid {
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 20px;
+      }
+
       .flip-card {
-        width: 120px;
-        height: 120px;
+        width: 90%;
+        max-width: 420px;
+        height: auto;
+        min-height: 150px;
       }
 
       .flip-card-back a {
-        padding: 25px;
-        font-size: 1.2rem;
+        width: 100%;
+        padding: 15px;
+      }
+
+      /* Mathematics header bar stays full width */
+      .subject-btn {
+        width: 100%;
+        box-sizing: border-box;
       }
     }
   </style>
@@ -380,10 +426,55 @@ h2 { text-align: center; font-size: 2rem; color: #002b5b; margin: 30px 0 20px; }
 
   window.toggleCard = function toggleCard(card) {
     const parent = card?.parentElement;
-    const wasClicked = card?.classList?.contains('clicked');
-    if (parent) parent.querySelectorAll('.flip-card.clicked').forEach(c => c.classList.remove('clicked'));
-    if (card && !wasClicked) card.classList.add('clicked');
+    if (!card || !parent) return;
+
+    const wasClicked = card.classList.contains('clicked');
+
+    // Collapse any open card in this grid (and reset dynamic height)
+    parent.querySelectorAll('.flip-card.clicked').forEach(c => {
+      c.classList.remove('clicked');
+      const panel = c.querySelector('.flip-card-back');
+      if (panel) panel.style.maxHeight = '0px';
+    });
+
+    if (wasClicked) return;
+
+    // Expand clicked card and set exact height so nothing gets cut off
+    card.classList.add('clicked');
+    const panel = card.querySelector('.flip-card-back');
+    if (panel) {
+      // Force reflow so transition triggers reliably
+      panel.style.maxHeight = '0px';
+      panel.offsetHeight;
+      panel.style.maxHeight = `${panel.scrollHeight}px`;
+    }
   };
+
+  // Rewrite click logic:
+  // - Year header toggles only
+  // - Set links open PDFs only
+  // - Remove old inline onclick on cards (prevents "whole card is a link" feel)
+  document.querySelectorAll('.flip-card[onclick]').forEach(card => {
+    card.removeAttribute('onclick');
+  });
+
+  document.querySelectorAll('.flip-card-front').forEach(front => {
+    const card = front.closest('.flip-card');
+    if (!card) return;
+    front.style.cursor = 'pointer';
+    front.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      window.toggleCard(card);
+    });
+  });
+
+  // Make sure set clicks never toggle the card.
+  document.querySelectorAll('.flip-card-back a').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+  });
 </script>
 </body>
 </html>
