@@ -1,19 +1,26 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Page Not Found | B.S. SEN. SEC. SCHOOL</title>
+
   <meta name="description" content="The page you are looking for could not be found on B.S. Senior Secondary School's website." />
-  <link rel="icon" href="favicon.png" />
-  <link rel="stylesheet" href="styles.css" />
+
+  <!-- ✅ FIXED PATHS -->
+  <link rel="icon" href="images/school_logo.webp" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
+
 <body class="page-reveal">
+
+  <!-- HEADER -->
   <header class="top-info">
     <div class="header-content">
       <div class="logo-left">
-        <img src="school_logo.webp" alt="B.S. School Logo">
+        <img src="images/school_logo.webp" alt="B.S. School Logo" loading="lazy">
       </div>
+
       <div class="school-title">
         <h1>B.S. SENIOR SECONDARY <span>SCHOOL</span></h1>
         <p>Affiliated to CBSE, New Delhi</p>
@@ -21,30 +28,38 @@
     </div>
   </header>
 
+  <!-- MAIN -->
   <main>
     <section id="school-simple">
       <div class="ss-wrap">
         <p class="ss-text">
           The page you’re trying to visit doesn’t exist or may have been moved.
         </p>
+
         <a href="index.html" class="ss-btn">Go Back Home</a>
       </div>
     </section>
   </main>
 
+  <!-- FOOTER -->
   <footer class="footer-main">
     <div class="footer-container">
       <div class="footer-box">
         <h3>B.S. SEN. SEC. SCHOOL</h3>
-        <p>A leading co-educational senior secondary school committed to excellence in academics, discipline, and holistic development.</p>
+        <p>
+          A leading co-educational senior secondary school committed to
+          excellence in academics, discipline, and holistic development.
+        </p>
       </div>
     </div>
+
     <div class="footer-bottom">
       <p>© <span id="year"></span> B.S. SEN. SEC. SCHOOL</p>
     </div>
   </footer>
 
-  <script src="scripts.js"></script>
+  <!-- ✅ FIXED JS -->
+  <script src="js/scripts.js" defer></script>
+
 </body>
 </html>
-
